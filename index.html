@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#176b55">
+<meta name="description" content="Fashion Bazar — আপনার পছন্দের পণ্য, সাশ্রয়ী দামে। Shop your favorites at Fashion Bazar.">
+<title>Fashion Bazar | ফ্যাশন বাজার</title>
+<style>
+:root{--green:#176b55;--green2:#e7f4ee;--orange:#f4a340;--ink:#17231f;--muted:#65736d;--paper:#fbfdfb;--line:#e2eae5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali","Hind Siliguri",sans-serif;background:var(--paper);color:var(--ink)}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(1120px,92%);margin:auto}
+.topbar{background:var(--green);color:white;font-size:13px;text-align:center;padding:8px 12px}
+header{position:sticky;top:0;z-index:5;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:20px;letter-spacing:-.4px}.logo{display:grid;place-items:center;background:var(--green);color:white;width:42px;height:42px;border-radius:13px;font-weight:900}.brand small{display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.3px}.navlinks{display:flex;gap:20px;color:#42534b;font-size:14px}.lang{border:1px solid var(--line);background:white;padding:8px 11px;border-radius:10px;cursor:pointer}
+.hero{padding:52px 0 34px}.hero-card{background:linear-gradient(120deg,#e7f4ee,#fff5e6);border:1px solid #dbece2;border-radius:28px;padding:clamp(24px,5vw,56px);display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:20px;overflow:hidden}.eyebrow{color:var(--green);font-size:13px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.12;margin:14px 0}.hero p{color:#52645b;max-width:510px;line-height:1.8}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:12px 18px;font-weight:750;cursor:pointer;transition:.2s}.primary{background:var(--green);color:white}.primary:hover{background:#105642;transform:translateY(-1px)}.secondary{background:white;border:1px solid #d5e3da;color:var(--green)}.hero-art{min-height:250px;display:grid;place-items:center;position:relative}.circle{width:min(300px,70vw);aspect-ratio:1;border-radius:50%;background:#f4a340;display:grid;place-items:center;box-shadow:inset -18px -20px 0 #e58b2d;transform:rotate(-7deg)}.shopping-bag{width:130px;height:145px;background:#fffaf0;border:5px solid var(--green);border-radius:14px 14px 24px 24px;display:grid;place-items:center;color:var(--green);font-size:29px;font-weight:900;position:relative;box-shadow:0 12px 25px #8a5b2230}.shopping-bag:before{content:"";position:absolute;top:-32px;width:58px;height:38px;border:5px solid var(--green);border-bottom:0;border-radius:30px 30px 0 0}
+.section{padding:28px 0 50px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px}.section h2{font-size:clamp(24px,3vw,32px);margin:0 0 5px}.muted{color:var(--muted);font-size:14px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.search{flex:1;min-width:190px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:white;outline-color:var(--green)}.categories{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid var(--line);border-radius:999px;padding:8px 13px;background:white;cursor:pointer;color:#506058;font-size:13px}.chip.active{background:var(--green);color:white;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product{border:1px solid var(--line);border-radius:18px;background:white;overflow:hidden;transition:.2s}.product:hover{transform:translateY(-3px);box-shadow:0 12px 28px #163b2a0d}.product-art{height:175px;display:grid;place-items:center;font-size:58px;background:linear-gradient(145deg,#f2f7f3,#fff0da)}.product:nth-child(3n+2) .product-art{background:linear-gradient(145deg,#eaf0ff,#f8eaff)}.product:nth-child(3n) .product-art{background:linear-gradient(145deg,#fff0e8,#ffe4c8)}.product-info{padding:14px}.product h3{font-size:16px;margin:0 0 5px}.product p{font-size:12px;color:var(--muted);margin:0 0 12px;min-height:34px;line-height:1.5}.price-row{display:flex;align-items:center;justify-content:space-between;gap:8px}.price{font-size:17px;font-weight:850;color:var(--green)}.small-btn{border:0;background:var(--green2);color:var(--green);padding:8px 10px;border-radius:9px;font-weight:750;cursor:pointer;font-size:12px}
+.empty{grid-column:1/-1;padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:15px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{padding:20px;border:1px solid var(--line);border-radius:16px;background:white}.feature b{display:block;margin:9px 0 4px}.feature span{font-size:24px}
+.order-box{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;background:#eef6f1;border-radius:24px;padding:clamp(20px,4vw,38px)}.order-box h2{margin-top:0}.order-box p{line-height:1.7;color:#52645b}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form label{font-size:13px;font-weight:700;display:grid;gap:6px}.form .full{grid-column:1/-1}.form input,.form select,.form textarea{width:100%;border:1px solid #d5e3da;background:white;border-radius:10px;padding:11px;outline-color:var(--green)}.form textarea{min-height:85px;resize:vertical}.form-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px}.note{font-size:12px;color:var(--muted);line-height:1.6}
+footer{background:#143d31;color:white;padding:30px 0;margin-top:30px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot p{color:#d2e5dc;font-size:13px}.foot small{color:#d2e5dc}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#17231f;color:white;padding:12px 16px;border-radius:12px;box-shadow:0 8px 24px #0002;z-index:10;display:none;max-width:90%;font-size:14px}
+@media(max-width:800px){.hero-card{grid-template-columns:1fr}.hero-art{min-height:190px}.circle{width:200px}.shopping-bag{transform:scale(.82)}.grid{grid-template-columns:repeat(2,1fr)}.product-art{height:145px}.order-box{grid-template-columns:1fr}.navlinks{display:none}}
+@media(max-width:430px){.brand{font-size:17px}.logo{width:38px;height:38px}.grid{gap:10px}.product-info{padding:11px}.product h3{font-size:14px}.product-art{height:125px;font-size:48px}.price{font-size:15px}.small-btn{padding:7px}.form{grid-template-columns:1fr}.form .full,.form-actions{grid-column:auto}.section-head{align-items:start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="topbar" data-bn="🛍️ Fashion Bazar — আপনার পছন্দ, আপনার স্টাইল" data-en="🛍️ Fashion Bazar — Your choice, your style">🛍️ Fashion Bazar — আপনার পছন্দ, আপনার স্টাইল</div>
+<header><div class="wrap nav">
+<a class="brand" href="#home"><span class="logo">FB</span><span>Fashion Bazar<small data-bn="ফ্যাশন ও লাইফস্টাইল" data-en="Fashion & Lifestyle">ফ্যাশন ও লাইফস্টাইল</small></span></a>
+<nav class="navlinks"><a href="#home" data-bn="হোম" data-en="Home">হোম</a><a href="#products" data-bn="পণ্য" data-en="Products">পণ্য</a><a href="#about" data-bn="আমাদের সম্পর্কে" data-en="About">আমাদের সম্পর্কে</a><a href="#order" data-bn="অর্ডার" data-en="Order">অর্ডার</a></nav>
+<button class="lang" id="langBtn" type="button">English</button>
+</div></header>
+<main>
+<section class="hero wrap" id="home"><div class="hero-card">
+<div><div class="eyebrow" data-bn="আপনার অনলাইন শপ" data-en="YOUR ONLINE SHOP">আপনার অনলাইন শপ</div>
+<h1 data-bn="পছন্দের পণ্য,<br>সেরা দামে।" data-en="Your favorite finds,<br>at great prices.">পছন্দের পণ্য,<br>সেরা দামে।</h1>
+<p data-bn="ফ্যাশন, লাইফস্টাইল ও দৈনন্দিন প্রয়োজনের পণ্য খুঁজে নিন এক জায়গায়। আপনার পছন্দের পণ্য অর্ডার করুন সহজেই।" data-en="Discover fashion, lifestyle, and everyday essentials in one place. Find your favorites and order with ease.">ফ্যাশন, লাইফস্টাইল ও দৈনন্দিন প্রয়োজনের পণ্য খুঁজে নিন এক জায়গায়। আপনার পছন্দের পণ্য অর্ডার করুন সহজেই।</p>
+<div class="actions"><a class="btn primary" href="#products" data-bn="পণ্য দেখুন →" data-en="Explore Products →">পণ্য দেখুন →</a><a class="btn secondary" href="#order" data-bn="অর্ডার করুন" data-en="Place an Order">অর্ডার করুন</a></div></div>
+<div class="hero-art" aria-hidden="true"><div class="circle"><div class="shopping-bag">F<br>B</div></div></div>
+</div></section>
+<section class="section wrap" id="products">
+<div class="section-head"><div><h2 data-bn="আমাদের পণ্য" data-en="Our Products">আমাদের পণ্য</h2><div class="muted" data-bn="নমুনা পণ্য—আপনার নিজের পণ্যের তথ্য দিয়ে পরিবর্তন করুন" data-en="Demo products — replace these with your own product details">নমুনা পণ্য—আপনার নিজের পণ্যের তথ্য দিয়ে পরিবর্তন করুন</div></div></div>
+<div class="tools"><input class="search" id="search" placeholder="পণ্য খুঁজুন / Search products" aria-label="Search products"><div class="categories" id="categories"></div></div>
+<div class="grid" id="productGrid"></div>
+</section>
+<section class="section wrap" id="about"><div class="section-head"><div><h2 data-bn="কেন Fashion Bazar?" data-en="Why Fashion Bazar?">কেন Fashion Bazar?</h2><div class="muted" data-bn="সহজ কেনাকাটা, আপনার সুবিধামতো" data-en="Easy shopping, made convenient">সহজ কেনাকাটা, আপনার সুবিধামতো</div></div></div>
+<div class="features"><div class="feature"><span>🛍️</span><b data-bn="বিভিন্ন ধরনের পণ্য" data-en="Product variety">বিভিন্ন ধরনের পণ্য</b><div class="muted" data-bn="এক জায়গায় নানা ক্যাটাগরির পণ্য" data-en="Different categories in one place">এক জায়গায় নানা ক্যাটাগরির পণ্য</div></div><div class="feature"><span>💬</span><b data-bn="সহজে অর্ডার" data-en="Easy ordering">সহজে অর্ডার</b><div class="muted" data-bn="WhatsApp অথবা অর্ডার ফর্ম ব্যবহার করুন" data-en="Order through WhatsApp or the order form">WhatsApp অথবা অর্ডার ফর্ম ব্যবহার করুন</div></div><div class="feature"><span>🤝</span><b data-bn="সহযোগিতাপূর্ণ সেবা" data-en="Helpful service">সহযোগিতাপূর্ণ সেবা</b><div class="muted" data-bn="অর্ডারের আগে পণ্যের বিস্তারিত জেনে নিন" data-en="Ask for product details before ordering">অর্ডারের আগে পণ্যের বিস্তারিত জেনে নিন</div></div></div>
+</section>
+<section class="section wrap" id="order"><div class="order-box"><div><div class="eyebrow" data-bn="সহজ অর্ডার" data-en="QUICK ORDER">সহজ অর্ডার</div><h2 data-bn="অর্ডার দিতে চান?" data-en="Ready to order?">অর্ডার দিতে চান?</h2><p data-bn="ফর্ম পূরণ করে WhatsApp-এ অর্ডারের তথ্য পাঠান। WhatsApp নম্বর সেট না করা পর্যন্ত বাটনটি কাজ করবে না—নিচের নির্দেশনা দেখুন।" data-en="Fill in the form to send your order details via WhatsApp. Set your WhatsApp number first using the instructions below.">ফর্ম পূরণ করে WhatsApp-এ অর্ডারের তথ্য পাঠান। WhatsApp নম্বর সেট না করা পর্যন্ত বাটনটি কাজ করবে না—নিচের নির্দেশনা দেখুন।</p><p class="note" data-bn="নোট: এটি একটি ফ্রি স্ট্যাটিক ওয়েবসাইট টেমপ্লেট। ফর্মের তথ্য সরাসরি WhatsApp-এ পাঠানো হয়; কোনো ডাটাবেসে সেভ হয় না।" data-en="Note: This is a free static website template. Form details are sent to WhatsApp; they are not stored in a database.">নোট: এটি একটি ফ্রি স্ট্যাটিক ওয়েবসাইট টেমপ্লেট। ফর্মের তথ্য সরাসরি WhatsApp-এ পাঠানো হয়; কোনো ডাটাবেসে সেভ হয় না।</p></div>
+<form class="form" id="orderForm">
+<label><span data-bn="আপনার নাম" data-en="Your name">আপনার নাম</span><input name="customer" required placeholder="নাম / Name"></label>
+<label><span data-bn="মোবাইল নম্বর" data-en="Phone number">মোবাইল নম্বর</span><input name="phone" required inputmode="tel" placeholder="01XXXXXXXXX"></label>
+<label class="full"><span data-bn="পণ্য নির্বাচন" data-en="Select product">পণ্য নির্বাচন</span><select name="product" id="productSelect" required></select></label>
+<label><span data-bn="পরিমাণ" data-en="Quantity">পরিমাণ</span><input name="quantity" type="number" min="1" value="1" required></label>
+<label><span data-bn="এলাকা / জেলা" data-en="Area / District">এলাকা / জেলা</span><input name="area" required placeholder="আপনার এলাকা"></label>
+<label class="full"><span data-bn="ঠিকানা ও অতিরিক্ত তথ্য" data-en="Address and notes">ঠিকানা ও অতিরিক্ত তথ্য</span><textarea name="address" required placeholder="ডেলিভারি ঠিকানা লিখুন"></textarea></label>
+<div class="form-actions"><button class="btn primary" type="submit" data-bn="WhatsApp-এ অর্ডার পাঠান" data-en="Send Order on WhatsApp">WhatsApp-এ অর্ডার পাঠান</button><button class="btn secondary" type="button" id="directWA" data-bn="সরাসরি WhatsApp" data-en="Open WhatsApp">সরাসরি WhatsApp</button></div>
+</form></div></section>
+</main>
+<footer><div class="wrap foot"><div><div class="brand"><span class="logo" style="background:#f4a340;color:#143d31">FB</span><span>Fashion Bazar<small style="color:#d2e5dc" data-bn="ফ্যাশন ও লাইফস্টাইল" data-en="Fashion & Lifestyle">ফ্যাশন ও লাইফস্টাইল</small></span></div><p data-bn="আপনার পছন্দের পণ্য, সহজ অর্ডার।" data-en="Your favorite products, easy ordering.">আপনার পছন্দের পণ্য, সহজ অর্ডার।</p></div><div><b data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</b><p>WhatsApp: <span id="phoneDisplay">নম্বর যোগ করা হয়নি</span><br><small data-bn="ওয়েবসাইট প্রকাশের আগে নিজের যোগাযোগের তথ্য যোগ করুন।" data-en="Add your contact details before publishing.">ওয়েবসাইট প্রকাশের আগে নিজের যোগাযোগের তথ্য যোগ করুন।</small></p></div></div></footer>
+<div class="toast" id="toast"></div>
+<script>
+// EDIT THESE SETTINGS BEFORE PUBLISHING:
+const WHATSAPP_NUMBER = "8801XXXXXXXXX"; // Replace with your WhatsApp number, country code included, no + or spaces.
+const CURRENCY = "৳";
+const products = [
+ {id:1,bn:"স্টাইলিশ টি-শার্ট",en:"Stylish T-Shirt",catBn:"ফ্যাশন",catEn:"Fashion",price:450,emoji:"👕",descBn:"আরামদায়ক দৈনন্দিন পোশাক",descEn:"Comfortable everyday wear"},
+ {id:2,bn:"লেডিস ব্যাগ",en:"Ladies Bag",catBn:"ফ্যাশন",catEn:"Fashion",price:850,emoji:"👜",descBn:"স্টাইলিশ ও ব্যবহারিক ডিজাইন",descEn:"Stylish and practical design"},
+ {id:3,bn:"স্কিন কেয়ার সেট",en:"Skincare Set",catBn:"বিউটি",catEn:"Beauty",price:650,emoji:"🧴",descBn:"দৈনন্দিন যত্নের জন্য",descEn:"For your daily care routine"},
+ {id:4,bn:"স্মার্ট ওয়াচ",en:"Smart Watch",catBn:"গ্যাজেট",catEn:"Gadgets",price:1250,emoji:"⌚",descBn:"স্মার্ট ও আধুনিক লুক",descEn:"A smart, modern look"},
+ {id:5,bn:"কিচেন স্টোরেজ",en:"Kitchen Storage",catBn:"ঘর ও রান্নাঘর",catEn:"Home & Kitchen",price:390,emoji:"🍱",descBn:"ঘর গুছিয়ে রাখতে সহায়ক",descEn:"Keep your space organized"},
+ {id:6,bn:"ওয়্যারলেস ইয়ারবাড",en:"Wireless Earbuds",catBn:"গ্যাজেট",catEn:"Gadgets",price:990,emoji:"🎧",descBn:"দৈনন্দিন ব্যবহারের জন্য",descEn:"Made for everyday listening"},
+ {id:7,bn:"কুশন কভার",en:"Cushion Cover",catBn:"ঘর ও রান্নাঘর",catEn:"Home & Kitchen",price:280,emoji:"🛋️",descBn:"ঘরের সাজে নতুন ছোঁয়া",descEn:"A fresh touch for your home"},
+ {id:8,bn:"সানগ্লাস",en:"Sunglasses",catBn:"ফ্যাশন",catEn:"Fashion",price:350,emoji:"🕶️",descBn:"ক্যাজুয়াল স্টাইলের অনুষঙ্গ",descEn:"A casual style accessory"}
+];
+let lang = "bn", activeCat = "all";
+const $ = id => document.getElementById(id);
+function isEN(){return lang==="en"}
+function productName(p){return isEN()?p.en:p.bn}
+function categoryName(p){return isEN()?p.catEn:p.catBn}
+function showToast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",3000)}
+function money(n){return CURRENCY+n.toLocaleString("en-US")}
+function renderCategories(){
+ const cats=[...new Set(products.map(p=>p.catBn))];
+ $("categories").innerHTML=`<button class="chip ${activeCat==="all"?"active":""}" data-cat="all">${isEN()?"All":"সব পণ্য"}</button>`+cats.map(c=>`<button class="chip ${activeCat===c?"active":""}" data-cat="${c}">${isEN()?products.find(p=>p.catBn===c).catEn:c}</button>`).join("");
+ $("categories").querySelectorAll("button").forEach(b=>b.onclick=()=>{activeCat=b.dataset.cat;renderCategories();renderProducts()});
+}
+function renderProducts(){
+ const q=$("search").value.trim().toLowerCase();
+ const list=products.filter(p=>(activeCat==="all"||p.catBn===activeCat)&&[p.bn,p.en,p.catBn,p.catEn].join(" ").toLowerCase().includes(q));
+ $("productGrid").innerHTML=list.length?list.map(p=>`<article class="product"><div class="product-art">${p.emoji}</div><div class="product-info"><h3>${productName(p)}</h3><p>${isEN()?p.descEn:p.descBn}</p><div class="price-row"><span class="price">${money(p.price)}</span><button class="small-btn" data-order="${p.id}">${isEN()?"Order":"অর্ডার"}</button></div></div></article>`).join(""):`<div class="empty">${isEN()?"No products found.":"কোনো পণ্য পাওয়া যায়নি।"}</div>`;
+ $("productGrid").querySelectorAll("[data-order]").forEach(b=>b.onclick=()=>{const p=products.find(x=>x.id===Number(b.dataset.order));$("productSelect").value=String(p.id);$("order").scrollIntoView({behavior:"smooth"});});
+ $("productSelect").innerHTML=products.map(p=>`<option value="${p.id}">${productName(p)} — ${money(p.price)}</option>`).join("");
+}
+function setLanguage(next){
+ lang=next;document.documentElement.lang=lang;
+ document.querySelectorAll("[data-bn][data-en]").forEach(el=>el.innerHTML=isEN()?el.dataset.en:el.dataset.bn);
+ $("langBtn").textContent=isEN()?"বাংলা":"English";
+ $("search").placeholder=isEN()?"Search products":"পণ্য খুঁজুন / Search products";
+ renderCategories();renderProducts();
+}
+$("langBtn").onclick=()=>setLanguage(isEN()?"bn":"en");
+$("search").addEventListener("input",renderProducts);
+function getOrderMessage(){
+ const f=new FormData($("orderForm"));const p=products.find(x=>x.id===Number(f.get("product")));
+ return `Fashion Bazar Order / অর্ডার\nName: ${f.get("customer")}\nPhone: ${f.get("phone")}\nProduct: ${p?productName(p):f.get("product")}\nPrice: ${p?money(p.price):""}\nQuantity: ${f.get("quantity")}\nArea: ${f.get("area")}\nAddress/Notes: ${f.get("address")}`;
+}
+function openWhatsApp(message){
+ if(WHATSAPP_NUMBER.includes("X")){showToast(isEN()?"Please set your WhatsApp number in the website code first.":"আগে ওয়েবসাইটের কোডে নিজের WhatsApp নম্বর বসান।");return false}
+ window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,"_blank","noopener");
+ return true;
+}
+$("orderForm").addEventListener("submit",e=>{e.preventDefault();openWhatsApp(getOrderMessage())});
+$("directWA").onclick=()=>openWhatsApp("Assalamu Alaikum, I would like to know more about products at Fashion Bazar.");
+$("phoneDisplay").textContent=WHATSAPP_NUMBER.includes("X")?"নম্বর যোগ করা হয়নি":"+"+WHATSAPP_NUMBER;
+renderCategories();renderProducts();
+</script>
+</body>
+</html>
