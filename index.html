@@ -62,26 +62,42 @@ footer{background:#143d31;color:white;padding:30px 0;margin-top:30px}.foot{displ
 <footer><div class="wrap foot"><div><div class="brand"><span class="logo" style="background:#f4a340;color:#143d31">FB</span><span>Fashion Bazar<small style="color:#d2e5dc" data-bn="ফ্যাশন ও লাইফস্টাইল" data-en="Fashion & Lifestyle">ফ্যাশন ও লাইফস্টাইল</small></span></div><p data-bn="আপনার পছন্দের পণ্য, সহজ অর্ডার।" data-en="Your favorite products, easy ordering.">আপনার পছন্দের পণ্য, সহজ অর্ডার।</p></div><div><b data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</b><p>WhatsApp: <span id="phoneDisplay">নম্বর যোগ করা হয়নি</span><br><small data-bn="ওয়েবসাইট প্রকাশের আগে নিজের যোগাযোগের তথ্য যোগ করুন।" data-en="Add your contact details before publishing.">ওয়েবসাইট প্রকাশের আগে নিজের যোগাযোগের তথ্য যোগ করুন।</small></p></div></div></footer>
 <div class="toast" id="toast"></div>
 <script>
-// EDIT THESE SETTINGS BEFORE PUBLISHING:
-const WHATSAPP_NUMBER = "8801XXXXXXXXX"; // Replace with your WhatsApp number, country code included, no + or spaces.
+// Supabase public connection settings. Never put a service_role/secret key here.
+const SUPABASE_URL = "https://lqkfvkxzgnlgysbxplzj.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxxa2Z2a3h6Z25sZ3lzYnhwbHpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM0NDIxNTEsImV4cCI6MjEwOTAxODE1MX0.zCrldo0AuBpGzsPrIQL06pvmVvPsXX59k4KsogKNli4";
+const WHATSAPP_NUMBER = "8801XXXXXXXXX"; // নিজের WhatsApp নম্বর বসাবেন: country code সহ, + ছাড়া।
 const CURRENCY = "৳";
-const products = [
- {id:1,bn:"স্টাইলিশ টি-শার্ট",en:"Stylish T-Shirt",catBn:"ফ্যাশন",catEn:"Fashion",price:450,emoji:"👕",descBn:"আরামদায়ক দৈনন্দিন পোশাক",descEn:"Comfortable everyday wear"},
- {id:2,bn:"লেডিস ব্যাগ",en:"Ladies Bag",catBn:"ফ্যাশন",catEn:"Fashion",price:850,emoji:"👜",descBn:"স্টাইলিশ ও ব্যবহারিক ডিজাইন",descEn:"Stylish and practical design"},
- {id:3,bn:"স্কিন কেয়ার সেট",en:"Skincare Set",catBn:"বিউটি",catEn:"Beauty",price:650,emoji:"🧴",descBn:"দৈনন্দিন যত্নের জন্য",descEn:"For your daily care routine"},
- {id:4,bn:"স্মার্ট ওয়াচ",en:"Smart Watch",catBn:"গ্যাজেট",catEn:"Gadgets",price:1250,emoji:"⌚",descBn:"স্মার্ট ও আধুনিক লুক",descEn:"A smart, modern look"},
- {id:5,bn:"কিচেন স্টোরেজ",en:"Kitchen Storage",catBn:"ঘর ও রান্নাঘর",catEn:"Home & Kitchen",price:390,emoji:"🍱",descBn:"ঘর গুছিয়ে রাখতে সহায়ক",descEn:"Keep your space organized"},
- {id:6,bn:"ওয়্যারলেস ইয়ারবাড",en:"Wireless Earbuds",catBn:"গ্যাজেট",catEn:"Gadgets",price:990,emoji:"🎧",descBn:"দৈনন্দিন ব্যবহারের জন্য",descEn:"Made for everyday listening"},
- {id:7,bn:"কুশন কভার",en:"Cushion Cover",catBn:"ঘর ও রান্নাঘর",catEn:"Home & Kitchen",price:280,emoji:"🛋️",descBn:"ঘরের সাজে নতুন ছোঁয়া",descEn:"A fresh touch for your home"},
- {id:8,bn:"সানগ্লাস",en:"Sunglasses",catBn:"ফ্যাশন",catEn:"Fashion",price:350,emoji:"🕶️",descBn:"ক্যাজুয়াল স্টাইলের অনুষঙ্গ",descEn:"A casual style accessory"}
-];
+let products = [];
 let lang = "bn", activeCat = "all";
+const fallbackProducts = [
+ {id:1,bn:"স্টাইলিশ টি-শার্ট",en:"Stylish T-Shirt",catBn:"ফ্যাশন",catEn:"Fashion",price:450,emoji:"👕",descBn:"আরামদায়ক দৈনন্দিন পোশাক",descEn:"Comfortable everyday wear"}
+];
 const $ = id => document.getElementById(id);
 function isEN(){return lang==="en"}
 function productName(p){return isEN()?p.en:p.bn}
 function categoryName(p){return isEN()?p.catEn:p.catBn}
 function showToast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",3000)}
-function money(n){return CURRENCY+n.toLocaleString("en-US")}
+function money(n){return CURRENCY+Number(n||0).toLocaleString("en-US")}
+async function loadProducts(){
+ try {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/products?select=id,name,description,price,image_url,category,stock&order=created_at.desc`, {headers:{apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`}});
+  if(!response.ok) throw new Error(`Supabase response ${response.status}`);
+  const rows = await response.json();
+  products = rows.filter(row => Number(row.stock ?? 1) > 0).map(row => ({
+   id:row.id, bn:row.name||"নামহীন পণ্য", en:row.name||"Unnamed product",
+   catBn:row.category||"অন্যান্য", catEn:row.category||"Other",
+   price:Number(row.price||0), image:row.image_url||"", emoji:"🛍️",
+   descBn:row.description||"", descEn:row.description||""
+  }));
+  if(!products.length) products = [];
+  renderCategories(); renderProducts();
+ } catch(error) {
+  console.error("Product loading failed:",error);
+  products = fallbackProducts;
+  renderCategories(); renderProducts();
+  showToast("পণ্য লোড হয়নি। Supabase সংযোগ ও RLS SELECT policy পরীক্ষা করুন।");
+ }
+}
 function renderCategories(){
  const cats=[...new Set(products.map(p=>p.catBn))];
  $("categories").innerHTML=`<button class="chip ${activeCat==="all"?"active":""}" data-cat="all">${isEN()?"All":"সব পণ্য"}</button>`+cats.map(c=>`<button class="chip ${activeCat===c?"active":""}" data-cat="${c}">${isEN()?products.find(p=>p.catBn===c).catEn:c}</button>`).join("");
@@ -90,7 +106,7 @@ function renderCategories(){
 function renderProducts(){
  const q=$("search").value.trim().toLowerCase();
  const list=products.filter(p=>(activeCat==="all"||p.catBn===activeCat)&&[p.bn,p.en,p.catBn,p.catEn].join(" ").toLowerCase().includes(q));
- $("productGrid").innerHTML=list.length?list.map(p=>`<article class="product"><div class="product-art">${p.emoji}</div><div class="product-info"><h3>${productName(p)}</h3><p>${isEN()?p.descEn:p.descBn}</p><div class="price-row"><span class="price">${money(p.price)}</span><button class="small-btn" data-order="${p.id}">${isEN()?"Order":"অর্ডার"}</button></div></div></article>`).join(""):`<div class="empty">${isEN()?"No products found.":"কোনো পণ্য পাওয়া যায়নি।"}</div>`;
+ $("productGrid").innerHTML=list.length?list.map(p=>`<article class="product"><div class="product-art">${p.image?`<img src="${p.image}" alt="${p.bn}" style="width:100%;height:100%;object-fit:cover;border-radius:12px">`:p.emoji}</div><div class="product-info"><h3>${productName(p)}</h3><p>${isEN()?p.descEn:p.descBn}</p><div class="price-row"><span class="price">${money(p.price)}</span><button class="small-btn" data-order="${p.id}">${isEN()?"Order":"অর্ডার"}</button></div></div></article>`).join(""):`<div class="empty">${isEN()?"No products found.":"কোনো পণ্য পাওয়া যায়নি।"}</div>`;
  $("productGrid").querySelectorAll("[data-order]").forEach(b=>b.onclick=()=>{const p=products.find(x=>x.id===Number(b.dataset.order));$("productSelect").value=String(p.id);$("order").scrollIntoView({behavior:"smooth"});});
  $("productSelect").innerHTML=products.map(p=>`<option value="${p.id}">${productName(p)} — ${money(p.price)}</option>`).join("");
 }
@@ -115,7 +131,7 @@ function openWhatsApp(message){
 $("orderForm").addEventListener("submit",e=>{e.preventDefault();openWhatsApp(getOrderMessage())});
 $("directWA").onclick=()=>openWhatsApp("Assalamu Alaikum, I would like to know more about products at Fashion Bazar.");
 $("phoneDisplay").textContent=WHATSAPP_NUMBER.includes("X")?"নম্বর যোগ করা হয়নি":"+"+WHATSAPP_NUMBER;
-renderCategories();renderProducts();
+loadProducts();
 </script>
 </body>
 </html>
