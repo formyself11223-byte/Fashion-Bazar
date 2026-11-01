@@ -84,7 +84,7 @@ footer{background:#102f28;margin-top:42px;padding:44px 0}footer .foot{align-item
 </form></div></section>
 </main>
 <footer><div class="wrap foot"><div><div class="brand"><span class="logo" aria-label="Fashion Bazar logo"><svg viewBox="0 0 100 100" role="img" aria-label="FB"><rect width="100" height="100" rx="23" fill="#173f35"/><path d="M24 31h52v8H33v12h35v8H33v20h-9z" fill="#fffaf0"/><path d="M53 31h23v8H62v12h11c10 0 16 5 16 14S82 81 71 81H53V31zm9 28v14h9c5 0 8-2 8-7s-3-7-8-7h-9z" fill="#e8a34b"/><circle cx="22" cy="22" r="5" fill="#e8a34b"/></svg></span><span>Fashion Bazar<small style="color:#d2e5dc" data-bn="ফ্যাশন ও লাইফস্টাইল" data-en="Fashion & Lifestyle">ফ্যাশন ও লাইফস্টাইল</small></span></div><p data-bn="আপনার পছন্দের পণ্য, সহজ অর্ডার।" data-en="Your favorite products, easy ordering.">আপনার পছন্দের পণ্য, সহজ অর্ডার।</p></div><div><b data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</b><p>Facebook: <a href="https://m.me/fashionbazar11" target="_blank" rel="noopener">Fashion Bazar Messenger</a><br><small data-bn="অর্ডার ও পণ্যের তথ্য জানতে আমাদের ইনবক্সে যোগাযোগ করুন।" data-en="Message us for orders and product information.">অর্ডার ও পণ্যের তথ্য জানতে আমাদের ইনবক্সে যোগাযোগ করুন।</small></p></div></div></footer>
-<div id="productModal" style="display:none;position:fixed;inset:0;background:#10251dcc;z-index:20;padding:18px;overflow:auto;align-items:center;justify-content:center"><div style="background:#fffdf8;max-width:850px;width:100%;margin:auto;border-radius:22px;padding:20px;position:relative"><button id="closeProductModal" style="position:absolute;right:14px;top:14px;border:0;background:#e8f1eb;border-radius:50%;width:40px;height:40px;font-size:22px">×</button><div id="productModalContent"></div></div></div><div class="toast" id="toast"></div>
+<div class="toast" id="toast"></div>
 <script>
 // Supabase public connection settings. Never put a service_role/secret key here.
 const SUPABASE_URL = "https://lqkfvkxzgnlgysbxplzj.supabase.co";
@@ -110,8 +110,6 @@ async function loadProducts(){
   products = rows.filter(row => Number(row.stock ?? 1) > 0).map(row => ({
    id:row.id, bn:row.name||"নামহীন পণ্য", en:row.name||"Unnamed product",
    catBn:row.category||"অন্যান্য", catEn:row.category||"Other",
-   parentCat:(String(row.category||"অন্যান্য").includes(" > ")?String(row.category).split(" > ")[0]:"অন্যান্য"),
-   subCat:(String(row.category||"অন্যান্য").includes(" > ")?String(row.category).split(" > ").slice(1).join(" > "):String(row.category||"অন্যান্য")),
    price:Number(row.price||0), image:row.image_url||"", emoji:"🛍️",
    descBn:row.description||"", descEn:row.description||""
   }));
@@ -125,18 +123,14 @@ async function loadProducts(){
  }
 }
 function renderCategories(){
- const parents=[...new Set(products.map(p=>p.parentCat||p.catBn))];
- const children=[...new Set(products.filter(p=>activeCat==="all"||p.parentCat===activeCat).map(p=>p.subCat||p.catBn))];
- $("categories").innerHTML=`<div style="width:100%;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:7px"><button class="chip ${activeCat==="all"?"active":""}" data-cat="all">সব পণ্য</button>`+parents.map(c=>`<button class="chip ${activeCat===c?"active":""}" data-cat="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join("")+`</div>`+
- (activeCat!=="all"?`<div style="width:100%;display:flex;gap:8px;flex-wrap:wrap">${children.map(c=>`<button class="chip" data-subcat="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join("")}</div>`:"");
- $("categories").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{activeCat=b.dataset.cat;selectedSub="";renderCategories();renderProducts()});
- $("categories").querySelectorAll("[data-subcat]").forEach(b=>b.onclick=()=>{selectedSub=b.dataset.subcat;renderProducts()});
+ const cats=[...new Set(products.map(p=>p.catBn))];
+ $("categories").innerHTML=`<button class="chip ${activeCat==="all"?"active":""}" data-cat="all">${isEN()?"All":"সব পণ্য"}</button>`+cats.map(c=>`<button class="chip ${activeCat===c?"active":""}" data-cat="${c}">${isEN()?products.find(p=>p.catBn===c).catEn:c}</button>`).join("");
+ $("categories").querySelectorAll("button").forEach(b=>b.onclick=()=>{activeCat=b.dataset.cat;renderCategories();renderProducts()});
 }
-let selectedSub="";
 function renderProducts(){
  const q=$("search").value.trim().toLowerCase();
- const list=products.filter(p=>(activeCat==="all"||(p.parentCat||p.catBn)===activeCat)&&(!selectedSub||(p.subCat||p.catBn)===selectedSub)&&[p.bn,p.en,p.catBn,p.catEn,p.parentCat,p.subCat].join(" ").toLowerCase().includes(q));
- $("productGrid").innerHTML=list.length?list.map(p=>`<article class="product"><div class="product-art">${p.image?`<img src="${p.image}" alt="${p.bn}" style="width:100%;height:100%;object-fit:cover;border-radius:12px">`:p.emoji}</div><div class="product-info"><h3>${productName(p)}</h3><p>${isEN()?p.descEn:p.descBn}</p><div class="price-row"><span class="price">${money(p.price)}</span><button class="small-btn" data-detail="${p.id}">বিস্তারিত</button><button class="small-btn" data-order="${p.id}">${isEN()?"Add to cart":"কার্টে যোগ করুন"}</button></div></div></article>`).join(""):`<div class="empty">${isEN()?"No products found.":"কোনো পণ্য পাওয়া যায়নি।"}</div>`;
+ const list=products.filter(p=>(activeCat==="all"||p.catBn===activeCat)&&[p.bn,p.en,p.catBn,p.catEn].join(" ").toLowerCase().includes(q));
+ $("productGrid").innerHTML=list.length?list.map(p=>`<article class="product"><div class="product-art">${p.image?`<img src="${p.image}" alt="${p.bn}" style="width:100%;height:100%;object-fit:cover;border-radius:12px">`:p.emoji}</div><div class="product-info"><h3>${productName(p)}</h3><p>${isEN()?p.descEn:p.descBn}</p><div class="price-row"><span class="price">${money(p.price)}</span><button class="small-btn" data-order="${p.id}">${isEN()?"Add to cart":"কার্টে যোগ করুন"}</button></div></div></article>`).join(""):`<div class="empty">${isEN()?"No products found.":"কোনো পণ্য পাওয়া যায়নি।"}</div>`;
 
 }
 function setLanguage(next){
@@ -158,10 +152,7 @@ function renderCart(){
 }
 function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function addToCart(id){const key=String(id);cart.set(key,Math.min(99,(cart.get(key)||0)+1));renderCart();$("order").scrollIntoView({behavior:"smooth"});showToast("পণ্য কার্টে যোগ হয়েছে।")}
-$("productGrid").addEventListener('click',e=>{const b=e.target.closest('[data-order]');if(b){addToCart(b.dataset.order);return}const d=e.target.closest('[data-detail]');if(d)showProductDetail(d.dataset.detail)});
-function showProductDetail(id){const p=products.find(x=>String(x.id)===String(id));if(!p)return;const related=products.filter(x=>String(x.id)!==String(id)&&((x.parentCat||x.catBn)===(p.parentCat||p.catBn)||(x.subCat||x.catBn)===(p.subCat||p.catBn))).slice(0,4);$('productModalContent').innerHTML=`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;padding-top:28px"><div style="background:#f2f0e8;border-radius:18px;min-height:250px;display:grid;place-items:center;overflow:hidden">${p.image?`<img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.bn)}" style="width:100%;height:100%;max-height:390px;object-fit:contain">`:'🛍️'}</div><div><div style="color:#b8782d;font-weight:800">${escapeHtml(p.parentCat||p.catBn)} / ${escapeHtml(p.subCat||'')}</div><h2>${escapeHtml(p.bn)}</h2><div style="font-size:25px;font-weight:900;color:#123c32">${money(p.price)}</div><p style="line-height:1.8;color:#718078">${escapeHtml(p.descBn||'পণ্যের বিস্তারিত জানতে আমাদের সঙ্গে যোগাযোগ করুন।')}</p><button class="btn primary" data-modal-order="${p.id}">কার্টে যোগ করুন</button></div></div><h3 style="margin-top:28px">এ ধরনের আরও পণ্য</h3><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:12px">${related.map(x=>`<button data-related="${x.id}" style="border:1px solid #e7e5dc;background:white;border-radius:14px;padding:10px;text-align:left;cursor:pointer">${x.image?`<img src="${escapeHtml(x.image)}" style="width:100%;height:110px;object-fit:cover;border-radius:10px">`:'🛍️'}<b style="display:block;margin-top:7px">${escapeHtml(x.bn)}</b><span>${money(x.price)}</span></button>`).join('')||'<p>এই বিভাগে আরও পণ্য যোগ হলে এখানে দেখা যাবে।</p>'}</div>`;
-$('productModal').style.display='flex';$('productModalContent').querySelector('[data-modal-order]').onclick=()=>{addToCart(id);$('productModal').style.display='none'};$('productModalContent').querySelectorAll('[data-related]').forEach(el=>el.onclick=()=>showProductDetail(el.dataset.related))}
-$('closeProductModal').onclick=()=>{$('productModal').style.display='none'};$('productModal').onclick=e=>{if(e.target.id==='productModal')$('productModal').style.display='none'};
+$("productGrid").addEventListener('click',e=>{const b=e.target.closest('[data-order]');if(b)addToCart(b.dataset.order)});
 $("clearCart").onclick=()=>{cart.clear();renderCart()};
 $("orderForm").addEventListener("submit",async e=>{
  e.preventDefault();const btn=$("submitOrder"), status=$("orderStatus");const entries=[...cart.entries()].map(([id,quantity])=>({p:products.find(x=>String(x.id)===String(id)),quantity})).filter(x=>x.p);
