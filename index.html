@@ -25,6 +25,28 @@ footer{background:#173f35;color:white;padding:36px 0;margin-top:34px}.foot{displ
 @media(max-width:800px){.hero-card{grid-template-columns:1fr}.hero-art{min-height:205px}.grid{grid-template-columns:repeat(2,1fr)}.product-art{height:165px}.order-box{grid-template-columns:1fr}.navlinks{display:none}}
 @media(max-width:430px){.brand{font-size:17px}.logo{width:40px;height:40px}.grid{gap:10px}.product-info{padding:12px}.product h3{font-size:14px}.product-art{height:135px;font-size:48px}.price{font-size:15px}.small-btn{padding:8px 10px}.form{grid-template-columns:1fr}.form .full,.form-actions{grid-column:auto}.section-head{align-items:start;flex-direction:column}.hero{padding-top:20px}}
 
+
+/* Premium 2026 visual refinement */
+:root{--green:#123c32;--green2:#e8f1eb;--orange:#c98a43;--ink:#172720;--muted:#718078;--paper:#fbfaf7;--line:#e7e5dc;--cream:#f5efe4}
+body{background:#fbfaf7;color:#172720;letter-spacing:-.12px}
+.topbar{background:#102f28;padding:10px 12px;font-size:12px;letter-spacing:.35px}
+header{background:rgba(255,253,248,.94);box-shadow:0 5px 24px rgba(22,48,37,.045)}
+.nav{padding:15px 0}.brand{font-size:21px}.logo{border-radius:14px;box-shadow:0 8px 22px #173f3520}
+.navlinks{gap:26px;font-size:13px}.navlinks a{transition:color .2s}
+.lang{font-weight:700;padding:10px 16px;border-color:#e4e1d7}
+.hero{padding-top:30px}.hero-card{min-height:420px;border:0;border-radius:28px;background:radial-gradient(circle at 80% 18%,#fff9 0 9%,transparent 10%),linear-gradient(118deg,#e8f0e9 0%,#f7f0e5 56%,#efe0cc 100%);box-shadow:0 22px 55px #344a3610}
+.hero h1{font-size:clamp(39px,5.6vw,68px);line-height:1.15;letter-spacing:-2px}.hero p{font-size:15px;line-height:2;max-width:490px}.eyebrow{letter-spacing:2.5px;font-size:11px}
+.btn{padding:14px 23px;box-shadow:none}.primary{background:#123c32;box-shadow:0 10px 24px #123c3225}.secondary{background:#fff;border-color:#dce2d9}
+.hero-art{min-height:285px}.hero-bag{width:160px;height:166px;border-radius:16px 16px 27px 27px;box-shadow:0 24px 44px #334a3525}
+.section{padding:45px 0 52px}.section h2{font-size:clamp(27px,3vw,36px)}.section-head{margin-bottom:22px}
+.search{border-radius:14px;padding:14px 17px;box-shadow:0 5px 18px #243a2b08}.chip{padding:10px 16px;font-weight:700}.chip.active{box-shadow:0 7px 18px #123c3225}
+.grid{gap:19px}.product{border:1px solid #eae8e0;border-radius:21px;box-shadow:0 7px 24px #1d342508}.product:hover{transform:translateY(-5px);box-shadow:0 18px 36px #1d342514}.product-art{height:220px;background:#f3f1e9!important}.product-art img{border-radius:0!important;transition:transform .45s}.product:hover .product-art img{transform:scale(1.045)}.product-info{padding:17px}.product h3{font-size:16px;line-height:1.5}.product p{font-size:12px;line-height:1.75;min-height:38px}.price{font-size:19px}.small-btn{padding:10px 14px;font-size:12px;border-radius:11px;font-weight:800}
+.features{gap:16px}.feature{border-radius:20px;padding:24px;box-shadow:0 7px 24px #1d342507}.feature span{background:#f3eadb;color:#a66a27}.feature b{font-size:15px}
+.order-box{border:0;border-radius:27px;background:linear-gradient(125deg,#eaf1eb,#f7efe3);box-shadow:0 18px 45px #253e2b0b;padding:clamp(24px,4.5vw,46px)}.order-box h2{font-size:clamp(27px,3vw,36px)}.form input,.form select,.form textarea{border:1px solid #dfe4dc;border-radius:13px;padding:14px;background:#fff;box-shadow:0 3px 12px #1e352708}.form label{gap:8px}.form-actions .btn{min-width:170px}
+footer{background:#102f28;margin-top:42px;padding:44px 0}footer .foot{align-items:center}footer a{text-decoration:underline;text-underline-offset:3px}
+.toast{border-radius:14px;padding:14px 18px;box-shadow:0 14px 38px #0003}
+@media(max-width:800px){.hero-card{min-height:auto;padding:30px 25px}.hero-art{min-height:215px}.product-art{height:175px}.grid{gap:13px}}
+@media(max-width:430px){.hero{padding-top:16px}.hero-card{border-radius:22px;padding:25px 20px}.hero h1{font-size:39px;letter-spacing:-1.2px}.hero-art{min-height:190px}.product-art{height:145px}.product-info{padding:12px}.product h3{font-size:13px}.price{font-size:16px}.small-btn{font-size:11px;padding:9px 10px}.section{padding:30px 0 38px}.order-box{border-radius:22px;padding:22px 17px}}
 </style>
 </head>
 <body>
@@ -135,7 +157,7 @@ $("clearCart").onclick=()=>{cart.clear();renderCart()};
 $("orderForm").addEventListener("submit",async e=>{
  e.preventDefault();const btn=$("submitOrder"), status=$("orderStatus");const entries=[...cart.entries()].map(([id,quantity])=>({p:products.find(x=>String(x.id)===String(id)),quantity})).filter(x=>x.p);
  if(!entries.length){status.textContent="আগে অন্তত একটি পণ্য কার্টে যোগ করুন।";return}
- const f=new FormData($("orderForm"));const items=entries.map(({p,quantity})=>({product_id:p.id,name:productName(p),quantity,price:Number(p.price),subtotal:Number(p.price)*quantity}));const total=items.reduce((s,x)=>s+x.subtotal,0);
+ const f=new FormData($("orderForm"));const items=entries.map(({p,quantity})=>({product_id:p.id,name:productName(p),quantity,price:Number(p.price),subtotal:Number(p.price)*quantity,image_url:p.image||''}));const total=items.reduce((s,x)=>s+x.subtotal,0);
  const order={customer_name:String(f.get('customer_name')).trim(),phone:String(f.get('phone')).trim(),address:String(f.get('address')).trim(),items,total,note:String(f.get('note')||'').trim(),status:'New'};
  btn.disabled=true;status.textContent="অর্ডার জমা হচ্ছে…";
  try{
