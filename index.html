@@ -139,7 +139,7 @@ $("orderForm").addEventListener("submit",async e=>{
  const order={customer_name:String(f.get('customer_name')).trim(),phone:String(f.get('phone')).trim(),address:String(f.get('address')).trim(),items,total,note:String(f.get('note')||'').trim(),status:'New'};
  btn.disabled=true;status.textContent="অর্ডার জমা হচ্ছে…";
  try{
-  const headers={apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`,'Content-Type':'application/json',Prefer:'return=representation'};
+  const headers={apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`,'Content-Type':'application/json',Prefer:'return=minimal'};
   const saved=await fetch(`${SUPABASE_URL}/rest/v1/orders`,{method:'POST',headers,body:JSON.stringify(order)});const savedBody=await saved.json().catch(()=>({}));
   if(!saved.ok)throw new Error(savedBody.message||savedBody.details||savedBody.error||`অর্ডার সেভ হয়নি (${saved.status})`);
   let notified=false;try{const nr=await fetch(`${SUPABASE_URL}/functions/v1/telegram-order-notify`,{method:'POST',headers:{apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`,'Content-Type':'application/json'},body:JSON.stringify(order)});notified=nr.ok}catch(_){notified=false}
