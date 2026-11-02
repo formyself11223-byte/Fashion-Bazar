@@ -31,6 +31,8 @@ footer{background:#173f35;color:white;padding:36px 0;margin-top:34px}.foot{displ
 body{background:#fbfaf7;color:#172720;letter-spacing:-.12px}
 .topbar{background:#102f28;padding:10px 12px;font-size:12px;letter-spacing:.35px}
 header{background:rgba(255,253,248,.94);box-shadow:0 5px 24px rgba(22,48,37,.045)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #c98a43;outline-offset:2px}
+img{max-width:100%}
 .nav{padding:15px 0}.brand{font-size:21px}.logo{border-radius:14px;box-shadow:0 8px 22px #173f3520}
 .navlinks{gap:26px;font-size:13px}.navlinks a{transition:color .2s}
 .lang{font-weight:700;padding:10px 16px;border-color:#e4e1d7}
@@ -47,13 +49,33 @@ footer{background:#102f28;margin-top:42px;padding:44px 0}footer .foot{align-item
 .toast{border-radius:14px;padding:14px 18px;box-shadow:0 14px 38px #0003}
 @media(max-width:800px){.hero-card{min-height:auto;padding:30px 25px}.hero-art{min-height:215px}.product-art{height:175px}.grid{gap:13px}}
 @media(max-width:430px){.hero{padding-top:16px}.hero-card{border-radius:22px;padding:25px 20px}.hero h1{font-size:39px;letter-spacing:-1.2px}.hero-art{min-height:190px}.product-art{height:145px}.product-info{padding:12px}.product h3{font-size:13px}.price{font-size:16px}.small-btn{font-size:11px;padding:9px 10px}.section{padding:30px 0 38px}.order-box{border-radius:22px;padding:22px 17px}}
+
+.delivery-promo{border:1px solid #e5e8de;border-radius:26px;padding:clamp(22px,4vw,38px);background:linear-gradient(120deg,#e8f1eb 0%,#fffaf1 100%);box-shadow:0 14px 40px #20392b0a}.delivery-promo-head{display:flex;align-items:flex-start;gap:16px}.delivery-icon{display:grid;place-items:center;flex:0 0 58px;height:58px;border-radius:18px;background:#fff;font-size:29px;box-shadow:0 6px 20px #123c3210}.delivery-promo h2{margin:7px 0;color:#123c32;font-size:clamp(25px,3vw,34px)}.delivery-promo p{margin:5px 0;color:#5f6e64;line-height:1.8}.delivery-rates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}.delivery-rate{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e7e5dc;border-radius:18px;padding:18px}.delivery-rate>span{font-size:25px}.delivery-rate b{display:block;color:#66756b;font-size:14px}.delivery-rate strong{display:block;color:#123c32;font-size:30px;margin-top:3px}.delivery-promise{display:flex;gap:11px;align-items:flex-start;margin-top:16px;padding:14px 16px;border-radius:14px;background:#fff9ed;border:1px solid #f0e2c8}.delivery-promise>span{display:grid;place-items:center;background:#e8f1eb;color:#123c32;border-radius:50%;width:25px;height:25px;flex:0 0 25px;font-weight:900}.delivery-promise p{font-size:13px;margin:0}@media(max-width:430px){.delivery-rates{grid-template-columns:1fr}.delivery-rate{padding:14px}.delivery-promo-head{gap:12px}.delivery-icon{flex-basis:48px;height:48px;font-size:24px}}
+
+
+/* Added shopping discovery sections */
+.promo-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:4px auto 10px}
+.promo-tile{display:flex;align-items:center;gap:12px;padding:16px;border-radius:17px;background:#fff;border:1px solid #e8e6dd;box-shadow:0 7px 22px #1d342507}
+.promo-tile .promo-emoji{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:#edf3ed;font-size:22px;flex:0 0 44px}
+.promo-tile b{display:block;color:#123c32;font-size:14px}.promo-tile small{display:block;color:#718078;font-size:12px;line-height:1.55;margin-top:3px}
+.discovery-section{padding-top:22px;padding-bottom:22px}
+.discovery-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:17px}
+.discovery-head h2{margin:0 0 5px;color:#123c32;font-size:clamp(23px,3vw,30px)}
+.discovery-head p{margin:0;color:#718078;font-size:13px;line-height:1.7}
+.discovery-link{color:#123c32;font-weight:800;font-size:13px;white-space:nowrap}
+.mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.mini-grid .product-art{height:180px}.sale-ribbon{display:inline-block;background:#fff1dc;color:#995a16;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:850;margin-bottom:8px}
+.product-badges{position:absolute;top:10px;left:10px;z-index:1;display:flex;gap:5px;flex-wrap:wrap}.product-art{position:relative}
+@media(max-width:800px){.promo-strip{grid-template-columns:1fr}.promo-tile{padding:13px}.mini-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.mini-grid .product-art{height:155px}}
+@media(max-width:430px){.discovery-section{padding-top:17px;padding-bottom:17px}.discovery-head{align-items:flex-start}.discovery-head h2{font-size:23px}.discovery-head p{font-size:12px}.mini-grid .product-art{height:130px}.promo-tile b{font-size:13px}}
+
 </style>
 </head>
 <body>
 <div class="topbar" data-bn="🛍️ Fashion Bazar — আপনার পছন্দ, আপনার স্টাইল" data-en="🛍️ Fashion Bazar — Your choice, your style">🛍️ Fashion Bazar — আপনার পছন্দ, আপনার স্টাইল</div>
 <header><div class="wrap nav">
 <a class="brand" href="#home"><span class="logo" aria-label="Fashion Bazar logo"><svg viewBox="0 0 100 100" role="img" aria-label="FB"><rect width="100" height="100" rx="23" fill="#173f35"/><path d="M24 31h52v8H33v12h35v8H33v20h-9z" fill="#fffaf0"/><path d="M53 31h23v8H62v12h11c10 0 16 5 16 14S82 81 71 81H53V31zm9 28v14h9c5 0 8-2 8-7s-3-7-8-7h-9z" fill="#e8a34b"/><circle cx="22" cy="22" r="5" fill="#e8a34b"/></svg></span><span>Fashion Bazar<small data-bn="ফ্যাশন ও লাইফস্টাইল" data-en="Fashion & Lifestyle">ফ্যাশন ও লাইফস্টাইল</small></span></a>
-<nav class="navlinks"><a href="#home" data-bn="হোম" data-en="Home">হোম</a><a href="#products" data-bn="পণ্য" data-en="Products">পণ্য</a><a href="#about" data-bn="আমাদের সম্পর্কে" data-en="About">আমাদের সম্পর্কে</a><a href="#order" data-bn="অর্ডার" data-en="Order">অর্ডার</a></nav>
+<nav class="navlinks"><a href="#home" data-bn="হোম" data-en="Home">হোম</a><a href="#products" data-bn="পণ্য" data-en="Products">পণ্য</a><a href="#offers" data-bn="অফার" data-en="Offers">অফার</a><a href="#about" data-bn="আমাদের সম্পর্কে" data-en="About">আমাদের সম্পর্কে</a><a href="#order" data-bn="অর্ডার" data-en="Order">অর্ডার</a></nav>
 <button class="lang" id="langBtn" type="button">English</button>
 </div></header>
 <main>
@@ -64,6 +86,13 @@ footer{background:#102f28;margin-top:42px;padding:44px 0}footer .foot{align-item
 <div class="actions"><a class="btn primary" href="#products" data-bn="পণ্য দেখুন →" data-en="Explore Products →">পণ্য দেখুন →</a><a class="btn secondary" href="#order" data-bn="অর্ডার করুন" data-en="Place an Order">অর্ডার করুন</a></div></div>
 <div class="hero-art" aria-hidden="true"><div class="hero-bag">FB<span>FASHION BAZAR</span></div></div>
 </div></section>
+<section class="wrap" aria-label="কেনাকাটার সুবিধা"><div class="promo-strip">
+<div class="promo-tile"><span class="promo-emoji">🚚</span><div><b data-bn="সারা বাংলাদেশে ডেলিভারি" data-en="Delivery Across Bangladesh">সারা বাংলাদেশে ডেলিভারি</b><small data-bn="ঢাকার ভিতরে ৳৭০ · বাইরে ৳১২০" data-en="৳70 inside Dhaka · ৳120 outside">ঢাকার ভিতরে ৳৭০ · বাইরে ৳১২০</small></div></div>
+<div class="promo-tile"><span class="promo-emoji">🛍️</span><div><b data-bn="সহজে পণ্য বেছে নিন" data-en="Easy product discovery">সহজে পণ্য বেছে নিন</b><small data-bn="বিস্তারিত দেখে কার্টে যোগ করুন" data-en="View details and add to cart">বিস্তারিত দেখে কার্টে যোগ করুন</small></div></div>
+<div class="promo-tile"><span class="promo-emoji">💬</span><div><b data-bn="সহায়তা পেতে ইনবক্স করুন" data-en="Message us for help">সহায়তা পেতে ইনবক্স করুন</b><small data-bn="পণ্যের তথ্য জানতে Messenger-এ যোগাযোগ করুন" data-en="Contact us on Messenger for product details">পণ্যের তথ্য জানতে Messenger-এ যোগাযোগ করুন</small></div></div>
+</div></section>
+<section class="section wrap discovery-section" id="offers" style="display:none"><div class="discovery-head"><div><h2 data-bn="✨ বিশেষ অফার" data-en="✨ Special Offers">✨ বিশেষ অফার</h2><p data-bn="ছাড়ের মূল্য দেওয়া পণ্যগুলো একসাথে দেখুন।" data-en="Explore products with a listed discount.">ছাড়ের মূল্য দেওয়া পণ্যগুলো একসাথে দেখুন।</p></div><a class="discovery-link" href="#products" data-bn="সব পণ্য দেখুন →" data-en="View all products →">সব পণ্য দেখুন →</a></div><div class="mini-grid" id="offerGrid"></div></section>
+<section class="section wrap discovery-section" id="new-arrivals"><div class="discovery-head"><div><h2 data-bn="নতুন পণ্য" data-en="New Arrivals">নতুন পণ্য</h2><p data-bn="সর্বশেষ যোগ করা পণ্যগুলো দেখুন।" data-en="Browse the latest products added to the store.">সর্বশেষ যোগ করা পণ্যগুলো দেখুন।</p></div><a class="discovery-link" href="#products" data-bn="সব পণ্য দেখুন →" data-en="View all products →">সব পণ্য দেখুন →</a></div><div class="mini-grid" id="newArrivalsGrid"></div></section>
 <section class="section wrap" id="products">
 <div class="section-head"><div><h2 data-bn="আমাদের পণ্য" data-en="Our Products">আমাদের পণ্য</h2><div class="muted" data-bn="নতুন পণ্য ও পছন্দের কালেকশন এক জায়গায়" data-en="Discover new arrivals and favorite collections in one place">নতুন পণ্য ও পছন্দের কালেকশন এক জায়গায়</div></div></div>
 <div class="tools"><input class="search" id="search" placeholder="পণ্য খুঁজুন / Search products" aria-label="Search products"><div class="categories" id="categories"></div></div>
@@ -72,16 +101,22 @@ footer{background:#102f28;margin-top:42px;padding:44px 0}footer .foot{align-item
 <section class="section wrap" id="about"><div class="section-head"><div><h2 data-bn="কেন Fashion Bazar?" data-en="Why Fashion Bazar?">কেন Fashion Bazar?</h2><div class="muted" data-bn="সহজ কেনাকাটা, আপনার সুবিধামতো" data-en="Easy shopping, made convenient">সহজ কেনাকাটা, আপনার সুবিধামতো</div></div></div>
 <div class="features"><div class="feature"><span>🛍️</span><b data-bn="বিভিন্ন ধরনের পণ্য" data-en="Product variety">বিভিন্ন ধরনের পণ্য</b><div class="muted" data-bn="এক জায়গায় নানা ক্যাটাগরির পণ্য" data-en="Different categories in one place">এক জায়গায় নানা ক্যাটাগরির পণ্য</div></div><div class="feature"><span>💬</span><b data-bn="সহজে অর্ডার" data-en="Easy ordering">সহজে অর্ডার</b><div class="muted" data-bn="Messenger-এ সরাসরি অর্ডার করুন" data-en="Message us directly on Messenger">Messenger-এ সরাসরি অর্ডার করুন</div></div><div class="feature"><span>🤝</span><b data-bn="সহযোগিতাপূর্ণ সেবা" data-en="Helpful service">সহযোগিতাপূর্ণ সেবা</b><div class="muted" data-bn="অর্ডারের আগে পণ্যের বিস্তারিত জেনে নিন" data-en="Ask for product details before ordering">অর্ডারের আগে পণ্যের বিস্তারিত জেনে নিন</div></div></div>
 </section>
+<section class="section wrap" id="delivery-info" aria-label="ডেলিভারি সুবিধা">
+<div class="delivery-promo"><div class="delivery-promo-head"><span class="delivery-icon">🚚</span><div><div class="eyebrow" data-bn="আপনার সুবিধাই আমাদের অগ্রাধিকার" data-en="YOUR CONVENIENCE COMES FIRST">আপনার সুবিধাই আমাদের অগ্রাধিকার</div><h2 data-bn="সারা বাংলাদেশে ডেলিভারি" data-en="Delivery Across Bangladesh">সারা বাংলাদেশে ডেলিভারি</h2><p data-bn="আপনার পছন্দের পণ্য পৌঁছে যাবে আপনার ঠিকানায়—সহজ অর্ডার, পরিষ্কার চার্জ।" data-en="Your favorite products delivered to your address—with easy ordering and clear delivery fees.">আপনার পছন্দের পণ্য পৌঁছে যাবে আপনার ঠিকানায়—সহজ অর্ডার, পরিষ্কার চার্জ।</p></div></div>
+<div class="delivery-rates"><div class="delivery-rate"><span>📍</span><div><b data-bn="ঢাকার ভিতরে" data-en="Inside Dhaka">ঢাকার ভিতরে</b><strong>৳৭০</strong></div></div><div class="delivery-rate"><span>🇧🇩</span><div><b data-bn="ঢাকার বাইরে" data-en="Outside Dhaka">ঢাকার বাইরে</b><strong>৳১২০</strong></div></div></div>
+<div class="delivery-promise"><span>✓</span><p data-bn="অর্ডার করার সময় আপনার থানা নির্বাচন করলেই ডেলিভারি চার্জ স্বয়ংক্রিয়ভাবে হিসাব হবে। পণ্য হাতে পাওয়ার সময় ডেলিভারি কর্মীর সামনে পণ্য পরীক্ষা করুন।" data-en="Choose your thana at checkout and the delivery fee will be calculated automatically. Please check your parcel while the delivery person is present.">অর্ডার করার সময় আপনার থানা নির্বাচন করলেই ডেলিভারি চার্জ স্বয়ংক্রিয়ভাবে হিসাব হবে। পণ্য হাতে পাওয়ার সময় ডেলিভারি কর্মীর সামনে পণ্য পরীক্ষা করুন।</p></div>
+</div>
+</section>
 <section class="section wrap" id="order"><div class="order-box"><div><div class="eyebrow" data-bn="সহজ অর্ডার" data-en="QUICK ORDER">সহজ অর্ডার</div><h2 data-bn="অর্ডার দিতে চান?" data-en="Ready to order?">অর্ডার দিতে চান?</h2><p data-bn="পণ্য বেছে কার্টে যোগ করুন, আপনার তথ্য দিন—অর্ডার সেভ হবে এবং আমাদের Telegram-এ নোটিফিকেশন যাবে।" data-en="Add products to your cart, enter your details, and submit. Your order will be saved and we will receive a Telegram notification.">পণ্য বেছে কার্টে যোগ করুন, আপনার তথ্য দিন—অর্ডার সেভ হবে এবং আমাদের Telegram-এ নোটিফিকেশন যাবে।</p><p class="note" data-bn="আপনার অর্ডার ডাটাবেসে সেভ হবে। অর্ডার নিশ্চিত করতে আমরা ফোনে যোগাযোগ করতে পারি।" data-en="Your order is saved to the database. We may call you to confirm it.">আপনার অর্ডার ডাটাবেসে সেভ হবে। অর্ডার নিশ্চিত করতে আমরা ফোনে যোগাযোগ করতে পারি।</p></div>
 <form class="form" id="orderForm">
 <div class="full" style="background:white;border:1px solid #dce2d9;border-radius:12px;padding:14px"><b>🛒 আপনার কার্ট</b><div id="cartItems" style="margin-top:10px">এখনো কোনো পণ্য যোগ করা হয়নি।</div><div style="margin-top:10px">পণ্যের মূল্য: <b id="cartSubtotal">৳0</b></div><div>ডেলিভারি চার্জ: <b id="cartDelivery">ঠিকানা লিখুন</b></div><div style="margin-top:6px;font-weight:850">সর্বমোট: <span id="cartTotal">৳0</span></div></div>
 <label><span>আপনার নাম *</span><input name="customer_name" required maxlength="120" placeholder="আপনার নাম"></label>
 <label><span>মোবাইল নম্বর *</span><input name="phone" required inputmode="tel" maxlength="16" placeholder="01XXXXXXXXX"></label>
 <label><span>বিভাগ *</span><select name="division" required><option value="">বিভাগ নির্বাচন করুন</option><option>ঢাকা</option><option>চট্টগ্রাম</option><option>রাজশাহী</option><option>খুলনা</option><option>বরিশাল</option><option>সিলেট</option><option>রংপুর</option><option>ময়মনসিংহ</option></select></label>
-<label><span>জেলা *</span><input name="district" required maxlength="100" placeholder="জেলার নাম লিখুন"></label>
-<label><span>থানা / উপজেলা *</span><input name="upazila" required maxlength="100" placeholder="থানা বা উপজেলার নাম"></label>
+<label><span>জেলা *</span><select name="district" id="districtSelect" required disabled><option value="">আগে বিভাগ নির্বাচন করুন</option></select></label>
+<label><span>থানা / উপজেলা *</span><select name="upazila" id="upazilaSelect" required disabled><option value="">আগে জেলা নির্বাচন করুন</option></select></label>
 <label class="full"><span>সম্পূর্ণ ডেলিভারি ঠিকানা *</span><textarea name="delivery_address" required maxlength="1000" placeholder="বাসা/ফ্ল্যাট, রোড, এলাকার নাম এবং পরিচিত স্থান লিখুন"></textarea></label>
-<p class="note full">ঢাকার তালিকাভুক্ত এলাকায় ডেলিভারি চার্জ ৳৭০। তালিকার বাইরে সব এলাকায় ৳১২০। সঠিক চার্জ ঠিকানার ভিত্তিতে দেখানো হবে।</p>
+<p class="note full" id="deliveryFeeHint">থানা নির্বাচন করলে ডেলিভারি চার্জ এখানে এবং কার্টে দেখা যাবে।</p>
 <div class="full" style="border:1px solid #e5d7b7;background:#fff8e8;padding:12px;border-radius:12px"><b>ডেলিভারি ও এক্সচেঞ্জ নীতি</b><p style="margin:6px 0 0">পণ্য হাতে পাওয়ার সময় ডেলিভারি কর্মীর উপস্থিতিতেই পরীক্ষা করুন। পণ্যে ত্রুটি থাকলে ডেলিভারি কর্মী চলে যাওয়ার আগে জানান; যাচাই করে আমাদের নীতিমালা অনুযায়ী প্রতিস্থাপনের ব্যবস্থা করা হবে। ডেলিভারি কর্মী চলে যাওয়ার পরে এক্সচেঞ্জের জন্য সাধারণত নতুন ডেলিভারি চার্জ প্রযোজ্য হবে।</p></div>
 <label class="full"><span>অতিরিক্ত নোট (ঐচ্ছিক)</span><textarea name="note" maxlength="500" placeholder="সাইজ/রঙ বা অন্য তথ্য"></textarea></label>
 <div class="form-actions"><button class="btn primary" id="submitOrder" type="submit">অর্ডার নিশ্চিত করুন</button><button class="btn secondary" type="button" id="clearCart">কার্ট খালি করুন</button></div>
@@ -109,11 +144,11 @@ function showToast(msg){$("toast").textContent=msg;$("toast").style.display="blo
 function money(n){return CURRENCY+Number(n||0).toLocaleString("en-US")}
 async function loadProducts(){
  try {
-  const response = await fetch(`${SUPABASE_URL}/rest/v1/products?select=id,name,description,price,original_price,product_code,video_url,has_sizes,sizes,image_url,category,stock&order=created_at.desc`, {headers:{apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`}});
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/products?select=id,name,description,price,original_price,product_code,video_url,has_sizes,sizes,image_url,category,stock,created_at&order=created_at.desc`, {headers:{apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`}});
   if(!response.ok) throw new Error(`Supabase response ${response.status}`);
   const rows = await response.json();
   products = rows.filter(row => Number(row.stock ?? 1) > 0).map(row => ({
-   id:row.id, bn:row.name||"নামহীন পণ্য", en:row.name||"Unnamed product",
+   id:row.id, createdAt:row.created_at||"", bn:row.name||"নামহীন পণ্য", en:row.name||"Unnamed product",
    catBn:row.category||"অন্যান্য", catEn:row.category||"Other",
    parentCat:(String(row.category||"অন্যান্য").includes(" > ")?String(row.category).split(" > ")[0]:"অন্যান্য"),
    subCat:(String(row.category||"অন্যান্য").includes(" > ")?String(row.category).split(" > ").slice(1).join(" > "):String(row.category||"অন্যান্য")),
@@ -121,13 +156,26 @@ async function loadProducts(){
    descBn:row.description||"", descEn:row.description||""
   }));
   if(!products.length) products = [];
-  renderCategories(); renderProducts();
+  renderCategories(); renderProducts(); renderDiscoverySections();
  } catch(error) {
   console.error("Product loading failed:",error);
   products = fallbackProducts;
-  renderCategories(); renderProducts();
+  renderCategories(); renderProducts(); renderDiscoverySections();
   showToast("পণ্য লোড হয়নি। Supabase সংযোগ ও RLS SELECT policy পরীক্ষা করুন।");
  }
+}
+function productCard(p){
+ const discounted=Number(p.originalPrice)>Number(p.price);
+ return `<article class="product"><div class="product-art">${discounted?'<div class="product-badges"><span class="sale-ribbon">ছাড় চলছে</span></div>':''}${p.image?`<img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.bn)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:12px">`:p.emoji}</div><div class="product-info"><h3>${escapeHtml(productName(p))}</h3><p>${escapeHtml(isEN()?p.descEn:p.descBn)}</p><div class="price-row"><span><span class="price">${money(p.price)}</span>${discounted?`<del style="display:block;color:#89928c;font-size:12px">${money(p.originalPrice)}</del>`:""}</span><button class="small-btn" data-detail="${escapeHtml(p.id)}">${isEN()?"Details":"বিস্তারিত"}</button><button class="small-btn" data-order="${escapeHtml(p.id)}">${isEN()?"Add to cart":"কার্টে যোগ করুন"}</button></div></div></article>`;
+}
+function renderDiscoverySections(){
+ const offers=products.filter(p=>Number(p.originalPrice)>Number(p.price)).slice(0,4);
+ const offerSection=$('offers');
+ if(offerSection){offerSection.style.display=offers.length?'block':'none';$('offerGrid').innerHTML=offers.map(productCard).join('');}
+ const newest=products.slice(0,4);
+ const newGrid=$('newArrivalsGrid');
+ if(newGrid)newGrid.innerHTML=newest.length?newest.map(productCard).join(''):`<div class="empty">${isEN()?"Products will appear here when added from the admin panel.":"অ্যাডমিন প্যানেল থেকে পণ্য যোগ করলে এখানে দেখা যাবে।"}</div>`;
+ ['offerGrid','newArrivalsGrid'].forEach(id=>{const grid=$(id);if(!grid||grid.dataset.bound)return;grid.dataset.bound='1';grid.addEventListener('click',e=>{const b=e.target.closest('[data-order]');if(b){addToCart(b.dataset.order);return}const d=e.target.closest('[data-detail]');if(d)showProductDetail(d.dataset.detail);});});
 }
 function renderCategories(){
  const parents=[...new Set(products.map(p=>p.parentCat||p.catBn))];
@@ -149,7 +197,7 @@ function setLanguage(next){
  document.querySelectorAll("[data-bn][data-en]").forEach(el=>el.innerHTML=isEN()?el.dataset.en:el.dataset.bn);
  $("langBtn").textContent=isEN()?"বাংলা":"English";
  $("search").placeholder=isEN()?"Search products":"পণ্য খুঁজুন / Search products";
- renderCategories();renderProducts();
+ renderCategories();renderProducts();renderDiscoverySections();
 }
 $("langBtn").onclick=()=>setLanguage(isEN()?"bn":"en");
 $("search").addEventListener("input",renderProducts);
@@ -159,20 +207,27 @@ function renderCart(){
  $("cartItems").innerHTML=entries.length?entries.map(({p,qty,size,key})=>`<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #eee"><span>${escapeHtml(productName(p))}${size?` (${escapeHtml(size)})`:""} — ${money(p.price)} × <input aria-label="পরিমাণ" type="number" min="1" max="99" value="${qty}" data-qty="${escapeHtml(key)}" style="width:65px;padding:6px;border:1px solid #ddd;border-radius:8px"> = ${money(p.price*qty)}</span><button type="button" data-remove="${escapeHtml(key)}" style="border:0;background:#fbe7e7;color:#8d2222;border-radius:8px;padding:7px">বাদ দিন</button></div>`).join(""):"এখনো কোনো পণ্য যোগ করা হয়নি।";
  const subtotal=entries.reduce((s,x)=>s+x.p.price*x.qty,0);
  $("cartSubtotal").textContent=money(subtotal);
- const fee=deliveryFeeFromAddress(document.querySelector('[name="delivery_address"]')?.value||'');
+ const fee=deliveryFeeFromSelection();
  $("cartDelivery").textContent=fee===null?'ঠিকানা লিখুন':money(fee);
  $("cartTotal").textContent=money(subtotal+(fee||0));
  $("cartItems").querySelectorAll('[data-qty]').forEach(el=>el.onchange=()=>{const q=Math.max(1,Math.min(99,Number(el.value)||1));cart.set(String(el.dataset.qty),q);renderCart()});
  $("cartItems").querySelectorAll('[data-remove]').forEach(el=>el.onclick=()=>{cart.delete(String(el.dataset.remove));renderCart()});
 }
-const DHAKA_CITY_AREAS = [
-'উত্তরা','খিলক্ষেত','কাওলা','দক্ষিণখান','উত্তরখান','গুলশান','বনানী','বারিধারা','বসুন্ধরা আবাসিক এলাকা','নিকেতন','বাড্ডা','রামপুরা','বনশ্রী','আফতাবনগর','মহাখালী','তেজগাঁও','নাখালপাড়া','মিরপুর','পল্লবী','রূপনগর','কাজীপাড়া','শেওড়াপাড়া','আগারগাঁও','শ্যামলী','কল্যাণপুর','গাবতলী','দারুস সালাম','মোহাম্মদপুর','আদাবর','বসিলা','ধানমন্ডি','কলাবাগান','জিগাতলা','গ্রিন রোড','হাজারীবাগ','লালবাগ','আজিমপুর','নিউমার্কেট','চকবাজার','বকশীবাজার','শাহবাগ','বাংলামোটর','ইস্কাটন','মগবাজার','মালিবাগ','মৌচাক','শান্তিনগর','কাকরাইল','বেইলি রোড','সেগুনবাগিচা','পল্টন','মতিঝিল','ফকিরাপুল','গুলিস্তান','কমলাপুর','ওয়ারী','সূত্রাপুর','সদরঘাট','বংশাল','কোতোয়ালি','খিলগাঁও','গোড়ান','বাসাবো','মুগদা','মান্ডা','যাত্রাবাড়ী','সায়েদাবাদ','ধলপুর','গোলাপবাগ','ডেমরা','দনিয়া','কদমতলী','জুরাইন','পোস্তগোলা','কামরাঙ্গীরচর'
-];
-function deliveryFeeFromAddress(address){
- const a=String(address||'').toLocaleLowerCase('bn-BD').replace(/[.,،؛]/g,' ').replace(/\s+/g,' ').trim();
- if(!a)return null;
- // মিরপুরের তালিকাভুক্ত সেক্টর/নম্বরের ক্ষেত্রে মিরপুর নাম থাকলেই ঢাকা-ভিতরের হার প্রযোজ্য।
- return DHAKA_CITY_AREAS.some(area=>a.includes(area.toLocaleLowerCase('bn-BD')))?70:120;
+const DHAKA_CITY_AREAS = ['উত্তরা','উত্তরখান','দক্ষিণখান','তুরাগ','খিলক্ষেত','বিমানবন্দর','ভাটারা','বাড্ডা','রামপুরা','গুলশান','বনানী','হাতিরঝিল','তেজগাঁও','তেজগাঁও শিল্পাঞ্চল','শেরেবাংলা নগর','মোহাম্মদপুর','আদাবর','মিরপুর','দারুস সালাম','শাহ আলী','পল্লবী','রূপনগর','কাফরুল','ভাসানটেক','ক্যান্টনমেন্ট','ধানমন্ডি','কলাবাগান','হাজারীবাগ','নিউমার্কেট','শাহবাগ','রমনা','পল্টন','মতিঝিল','লালবাগ','চকবাজার','বংশাল','কোতোয়ালি','সূত্রাপুর','ওয়ারী','গেন্ডারিয়া','কামরাঙ্গীরচর','শাহজাহানপুর','খিলগাঁও','সবুজবাগ','মুগদা','যাত্রাবাড়ী','কদমতলী','শ্যামপুর','ডেমরা'];
+let bdLocationData=[];
+const bnDivisionFallback=['ঢাকা','চট্টগ্রাম','রাজশাহী','খুলনা','বরিশাল','সিলেট','রংপুর','ময়মনসিংহ'];
+function setSelectOptions(select,placeholder,items){select.innerHTML='';const first=document.createElement('option');first.value='';first.textContent=placeholder;select.append(first);items.forEach(item=>{const op=document.createElement('option');op.value=item.bn_name||item.name;op.textContent=item.bn_name||item.name;select.append(op)});}
+function findDivision(name){return bdLocationData.find(d=>(d.bn_name||d.name)===name)}
+function selectedDistrict(){const d=findDivision(document.querySelector('[name="division"]').value);return d?.districts?.find(x=>(x.bn_name||x.name)===$('districtSelect').value)}
+function setDeliveryHint(){const fee=deliveryFeeFromSelection();const hint=$('deliveryFeeHint');if(hint)hint.textContent=fee===null?'থানা নির্বাচন করলে ডেলিভারি চার্জ এখানে এবং কার্টে দেখা যাবে।':`ডেলিভারি চার্জ: ${money(fee)} — ${fee===70?'ঢাকার ভিতরে':'ঢাকার বাইরে'}`;}
+function deliveryFeeFromSelection(){const name=String(document.querySelector('[name="upazila"]')?.value||'').trim();if(!name)return null;const division=document.querySelector('[name="division"]').value;const district=document.querySelector('[name="district"]').value;return division==='ঢাকা'&&district==='ঢাকা'&&DHAKA_CITY_AREAS.includes(name)?70:120;}
+async function loadLocationData(){const divisionSelect=document.querySelector('[name="division"]'),districtSelect=$('districtSelect'),upazilaSelect=$('upazilaSelect');
+ try{const response=await fetch('https://iqbalhasandev.github.io/bangladesh-geo-json/bangladesh-geo.json');if(!response.ok)throw Error('লোকেশন তালিকা লোড হয়নি');bdLocationData=await response.json();setSelectOptions(divisionSelect,'বিভাগ নির্বাচন করুন',bdLocationData);divisionSelect.disabled=false;
+ }catch(e){bdLocationData=[];setSelectOptions(divisionSelect,'বিভাগ নির্বাচন করুন',bnDivisionFallback.map(name=>({bn_name:name})));divisionSelect.disabled=false;const status=document.getElementById('orderStatus');if(status)status.textContent='ঠিকানার তালিকা লোড করতে ইন্টারনেট সংযোগ পরীক্ষা করুন।';}
+ divisionSelect.addEventListener('change',()=>{const d=findDivision(divisionSelect.value);setSelectOptions(districtSelect,'জেলা নির্বাচন করুন',d?.districts||[]);districtSelect.disabled=!d;setSelectOptions(upazilaSelect,'আগে জেলা নির্বাচন করুন',[]);upazilaSelect.disabled=true;renderCart();setDeliveryHint();});
+ districtSelect.addEventListener('change',()=>{const d=selectedDistrict();let places=(d?.upazilas||[]).map(x=>({name:x.name,bn_name:x.bn_name||x.name}));if((districtSelect.value==='ঢাকা'||districtSelect.value==='Dhaka')&&divisionSelect.value==='ঢাকা'){places=[...DHAKA_CITY_AREAS.map(name=>({name,bn_name:name})),...places.filter(x=>!DHAKA_CITY_AREAS.includes(x.bn_name))];}
+ setSelectOptions(upazilaSelect,'থানা / উপজেলা নির্বাচন করুন',places);upazilaSelect.disabled=!d;renderCart();setDeliveryHint();});
+ upazilaSelect.addEventListener('change',()=>{renderCart();setDeliveryHint();});
 }
 function normalizeBangladeshPhone(value){
  let d=String(value||'').replace(/[^0-9]/g,'');
@@ -195,7 +250,8 @@ $("orderForm").addEventListener("submit",async e=>{
  const phone=normalizeBangladeshPhone(f.get('phone'));
  if(!/^01[3-9][0-9]{8}$/.test(phone)){status.textContent="❌ সঠিক বাংলাদেশি মোবাইল নম্বর দিন (যেমন 01XXXXXXXXX)।";return}
  const deliveryAddress=String(f.get('delivery_address')||'').trim();
- const deliveryCharge=deliveryFeeFromAddress(deliveryAddress);
+ const deliveryCharge=deliveryFeeFromSelection();
+ if(deliveryCharge===null){status.textContent='❌ আগে বিভাগ, জেলা ও থানা নির্বাচন করুন।';return;}
  const items=entries.map(({p,size,quantity})=>({product_id:p.id,name:productName(p),product_code:p.code||"",size:size||"",quantity,price:Number(p.price),subtotal:Number(p.price)*quantity,image_url:p.image||''}));
  const subtotal=items.reduce((s,x)=>s+x.subtotal,0);const total=subtotal+deliveryCharge;
  const division=String(f.get('division')||'').trim(),district=String(f.get('district')||'').trim(),upazila=String(f.get('upazila')||'').trim();
@@ -210,6 +266,7 @@ $("orderForm").addEventListener("submit",async e=>{
  }catch(err){status.textContent="❌ অর্ডার জমা হয়নি: "+err.message+"। অনুগ্রহ করে আবার চেষ্টা করুন।"}finally{btn.disabled=false}
 });
 loadProducts();
+loadLocationData();
 </script>
 </body>
 </html>
