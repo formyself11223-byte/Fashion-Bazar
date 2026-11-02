@@ -74,10 +74,15 @@ footer{background:#102f28;margin-top:42px;padding:44px 0}footer .foot{align-item
 </section>
 <section class="section wrap" id="order"><div class="order-box"><div><div class="eyebrow" data-bn="সহজ অর্ডার" data-en="QUICK ORDER">সহজ অর্ডার</div><h2 data-bn="অর্ডার দিতে চান?" data-en="Ready to order?">অর্ডার দিতে চান?</h2><p data-bn="পণ্য বেছে কার্টে যোগ করুন, আপনার তথ্য দিন—অর্ডার সেভ হবে এবং আমাদের Telegram-এ নোটিফিকেশন যাবে।" data-en="Add products to your cart, enter your details, and submit. Your order will be saved and we will receive a Telegram notification.">পণ্য বেছে কার্টে যোগ করুন, আপনার তথ্য দিন—অর্ডার সেভ হবে এবং আমাদের Telegram-এ নোটিফিকেশন যাবে।</p><p class="note" data-bn="আপনার অর্ডার ডাটাবেসে সেভ হবে। অর্ডার নিশ্চিত করতে আমরা ফোনে যোগাযোগ করতে পারি।" data-en="Your order is saved to the database. We may call you to confirm it.">আপনার অর্ডার ডাটাবেসে সেভ হবে। অর্ডার নিশ্চিত করতে আমরা ফোনে যোগাযোগ করতে পারি।</p></div>
 <form class="form" id="orderForm">
-<div class="full" style="background:white;border:1px solid #dce2d9;border-radius:12px;padding:14px"><b>🛒 আপনার কার্ট</b><div id="cartItems" style="margin-top:10px">এখনো কোনো পণ্য যোগ করা হয়নি।</div><div style="margin-top:10px;font-weight:850">মোট: <span id="cartTotal">৳0</span></div></div>
+<div class="full" style="background:white;border:1px solid #dce2d9;border-radius:12px;padding:14px"><b>🛒 আপনার কার্ট</b><div id="cartItems" style="margin-top:10px">এখনো কোনো পণ্য যোগ করা হয়নি।</div><div style="margin-top:10px">পণ্যের মূল্য: <b id="cartSubtotal">৳0</b></div><div>ডেলিভারি চার্জ: <b id="cartDelivery">ঠিকানা লিখুন</b></div><div style="margin-top:6px;font-weight:850">সর্বমোট: <span id="cartTotal">৳0</span></div></div>
 <label><span>আপনার নাম *</span><input name="customer_name" required maxlength="120" placeholder="আপনার নাম"></label>
-<label><span>মোবাইল নম্বর *</span><input name="phone" required inputmode="tel" maxlength="30" placeholder="01XXXXXXXXX"></label>
-<label class="full"><span>সম্পূর্ণ ডেলিভারি ঠিকানা *</span><textarea name="address" required maxlength="1000" placeholder="বাসা/রোড, এলাকা, জেলা"></textarea></label>
+<label><span>মোবাইল নম্বর *</span><input name="phone" required inputmode="tel" maxlength="16" placeholder="01XXXXXXXXX"></label>
+<label><span>বিভাগ *</span><select name="division" required><option value="">বিভাগ নির্বাচন করুন</option><option>ঢাকা</option><option>চট্টগ্রাম</option><option>রাজশাহী</option><option>খুলনা</option><option>বরিশাল</option><option>সিলেট</option><option>রংপুর</option><option>ময়মনসিংহ</option></select></label>
+<label><span>জেলা *</span><input name="district" required maxlength="100" placeholder="জেলার নাম লিখুন"></label>
+<label><span>থানা / উপজেলা *</span><input name="upazila" required maxlength="100" placeholder="থানা বা উপজেলার নাম"></label>
+<label class="full"><span>সম্পূর্ণ ডেলিভারি ঠিকানা *</span><textarea name="delivery_address" required maxlength="1000" placeholder="বাসা/ফ্ল্যাট, রোড, এলাকার নাম এবং পরিচিত স্থান লিখুন"></textarea></label>
+<p class="note full">ঢাকার তালিকাভুক্ত এলাকায় ডেলিভারি চার্জ ৳৭০। তালিকার বাইরে সব এলাকায় ৳১২০। সঠিক চার্জ ঠিকানার ভিত্তিতে দেখানো হবে।</p>
+<div class="full" style="border:1px solid #e5d7b7;background:#fff8e8;padding:12px;border-radius:12px"><b>ডেলিভারি ও এক্সচেঞ্জ নীতি</b><p style="margin:6px 0 0">পণ্য হাতে পাওয়ার সময় ডেলিভারি কর্মীর উপস্থিতিতেই পরীক্ষা করুন। পণ্যে ত্রুটি থাকলে ডেলিভারি কর্মী চলে যাওয়ার আগে জানান; যাচাই করে আমাদের নীতিমালা অনুযায়ী প্রতিস্থাপনের ব্যবস্থা করা হবে। ডেলিভারি কর্মী চলে যাওয়ার পরে এক্সচেঞ্জের জন্য সাধারণত নতুন ডেলিভারি চার্জ প্রযোজ্য হবে।</p></div>
 <label class="full"><span>অতিরিক্ত নোট (ঐচ্ছিক)</span><textarea name="note" maxlength="500" placeholder="সাইজ/রঙ বা অন্য তথ্য"></textarea></label>
 <div class="form-actions"><button class="btn primary" id="submitOrder" type="submit">অর্ডার নিশ্চিত করুন</button><button class="btn secondary" type="button" id="clearCart">কার্ট খালি করুন</button></div>
 <p class="note full" id="orderStatus" role="status"></p>
@@ -152,9 +157,28 @@ const cart = new Map();
 function renderCart(){
  const entries=[...cart.entries()].map(([key,qty])=>{const [id,...parts]=key.split("::");return {p:products.find(x=>String(x.id)===String(id)),size:parts.join("::"),qty,key}}).filter(x=>x.p);
  $("cartItems").innerHTML=entries.length?entries.map(({p,qty,size,key})=>`<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #eee"><span>${escapeHtml(productName(p))}${size?` (${escapeHtml(size)})`:""} — ${money(p.price)} × <input aria-label="পরিমাণ" type="number" min="1" max="99" value="${qty}" data-qty="${escapeHtml(key)}" style="width:65px;padding:6px;border:1px solid #ddd;border-radius:8px"> = ${money(p.price*qty)}</span><button type="button" data-remove="${escapeHtml(key)}" style="border:0;background:#fbe7e7;color:#8d2222;border-radius:8px;padding:7px">বাদ দিন</button></div>`).join(""):"এখনো কোনো পণ্য যোগ করা হয়নি।";
- $("cartTotal").textContent=money(entries.reduce((s,x)=>s+x.p.price*x.qty,0));
+ const subtotal=entries.reduce((s,x)=>s+x.p.price*x.qty,0);
+ $("cartSubtotal").textContent=money(subtotal);
+ const fee=deliveryFeeFromAddress(document.querySelector('[name="delivery_address"]')?.value||'');
+ $("cartDelivery").textContent=fee===null?'ঠিকানা লিখুন':money(fee);
+ $("cartTotal").textContent=money(subtotal+(fee||0));
  $("cartItems").querySelectorAll('[data-qty]').forEach(el=>el.onchange=()=>{const q=Math.max(1,Math.min(99,Number(el.value)||1));cart.set(String(el.dataset.qty),q);renderCart()});
  $("cartItems").querySelectorAll('[data-remove]').forEach(el=>el.onclick=()=>{cart.delete(String(el.dataset.remove));renderCart()});
+}
+const DHAKA_CITY_AREAS = [
+'উত্তরা','খিলক্ষেত','কাওলা','দক্ষিণখান','উত্তরখান','গুলশান','বনানী','বারিধারা','বসুন্ধরা আবাসিক এলাকা','নিকেতন','বাড্ডা','রামপুরা','বনশ্রী','আফতাবনগর','মহাখালী','তেজগাঁও','নাখালপাড়া','মিরপুর','পল্লবী','রূপনগর','কাজীপাড়া','শেওড়াপাড়া','আগারগাঁও','শ্যামলী','কল্যাণপুর','গাবতলী','দারুস সালাম','মোহাম্মদপুর','আদাবর','বসিলা','ধানমন্ডি','কলাবাগান','জিগাতলা','গ্রিন রোড','হাজারীবাগ','লালবাগ','আজিমপুর','নিউমার্কেট','চকবাজার','বকশীবাজার','শাহবাগ','বাংলামোটর','ইস্কাটন','মগবাজার','মালিবাগ','মৌচাক','শান্তিনগর','কাকরাইল','বেইলি রোড','সেগুনবাগিচা','পল্টন','মতিঝিল','ফকিরাপুল','গুলিস্তান','কমলাপুর','ওয়ারী','সূত্রাপুর','সদরঘাট','বংশাল','কোতোয়ালি','খিলগাঁও','গোড়ান','বাসাবো','মুগদা','মান্ডা','যাত্রাবাড়ী','সায়েদাবাদ','ধলপুর','গোলাপবাগ','ডেমরা','দনিয়া','কদমতলী','জুরাইন','পোস্তগোলা','কামরাঙ্গীরচর'
+];
+function deliveryFeeFromAddress(address){
+ const a=String(address||'').toLocaleLowerCase('bn-BD').replace(/[.,،؛]/g,' ').replace(/\s+/g,' ').trim();
+ if(!a)return null;
+ // মিরপুরের তালিকাভুক্ত সেক্টর/নম্বরের ক্ষেত্রে মিরপুর নাম থাকলেই ঢাকা-ভিতরের হার প্রযোজ্য।
+ return DHAKA_CITY_AREAS.some(area=>a.includes(area.toLocaleLowerCase('bn-BD')))?70:120;
+}
+function normalizeBangladeshPhone(value){
+ let d=String(value||'').replace(/[^0-9]/g,'');
+ if(d.startsWith('00880'))d=d.slice(2);
+ if(d.startsWith('880'))d='0'+d.slice(3);
+ return d;
 }
 function escapeHtml(v){return String(v??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function addToCart(id,size=""){const key=String(id)+"::"+String(size||"");cart.set(key,Math.min(99,(cart.get(key)||0)+1));renderCart();$("order").scrollIntoView({behavior:"smooth"});showToast("পণ্য কার্টে যোগ হয়েছে।")}
@@ -163,11 +187,19 @@ function showProductDetail(id){const p=products.find(x=>String(x.id)===String(id
 $('productModal').style.display='flex';$('productModalContent').querySelector('[data-modal-order]').onclick=()=>{const size=$('detailSize')?.value||"";if(p.hasSizes&&p.sizes.length&&!size){showToast("আগে সাইজ নির্বাচন করুন।");return}addToCart(id,size);$('productModal').style.display='none'};$('productModalContent').querySelectorAll('[data-related]').forEach(el=>el.onclick=()=>showProductDetail(el.dataset.related))}
 $('closeProductModal').onclick=()=>{$('productModal').style.display='none'};$('productModal').onclick=e=>{if(e.target.id==='productModal')$('productModal').style.display='none'};
 $("clearCart").onclick=()=>{cart.clear();renderCart()};
+document.querySelector('[name="delivery_address"]')?.addEventListener('input',renderCart);
 $("orderForm").addEventListener("submit",async e=>{
  e.preventDefault();const btn=$("submitOrder"), status=$("orderStatus");const entries=[...cart.entries()].map(([key,quantity])=>{const [id,...parts]=key.split("::");return {p:products.find(x=>String(x.id)===String(id)),size:parts.join("::"),quantity}}).filter(x=>x.p);
  if(!entries.length){status.textContent="আগে অন্তত একটি পণ্য কার্টে যোগ করুন।";return}
- const f=new FormData($("orderForm"));const items=entries.map(({p,size,quantity})=>({product_id:p.id,name:productName(p),product_code:p.code||"",size:size||"",quantity,price:Number(p.price),subtotal:Number(p.price)*quantity,image_url:p.image||''}));const total=items.reduce((s,x)=>s+x.subtotal,0);
- const order={customer_name:String(f.get('customer_name')).trim(),phone:String(f.get('phone')).trim(),address:String(f.get('address')).trim(),items,total,note:String(f.get('note')||'').trim(),status:'New'};
+ const f=new FormData($("orderForm"));
+ const phone=normalizeBangladeshPhone(f.get('phone'));
+ if(!/^01[3-9][0-9]{8}$/.test(phone)){status.textContent="❌ সঠিক বাংলাদেশি মোবাইল নম্বর দিন (যেমন 01XXXXXXXXX)।";return}
+ const deliveryAddress=String(f.get('delivery_address')||'').trim();
+ const deliveryCharge=deliveryFeeFromAddress(deliveryAddress);
+ const items=entries.map(({p,size,quantity})=>({product_id:p.id,name:productName(p),product_code:p.code||"",size:size||"",quantity,price:Number(p.price),subtotal:Number(p.price)*quantity,image_url:p.image||''}));
+ const subtotal=items.reduce((s,x)=>s+x.subtotal,0);const total=subtotal+deliveryCharge;
+ const division=String(f.get('division')||'').trim(),district=String(f.get('district')||'').trim(),upazila=String(f.get('upazila')||'').trim();
+ const order={customer_name:String(f.get('customer_name')).trim(),phone,address:[division,district,upazila,deliveryAddress].filter(Boolean).join(', '),division,district,upazila,delivery_address:deliveryAddress,items,subtotal,delivery_charge:deliveryCharge,total,note:String(f.get('note')||'').trim(),status:'New'};
  btn.disabled=true;status.textContent="অর্ডার জমা হচ্ছে…";
  try{
   const headers={apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`,'Content-Type':'application/json',Prefer:'return=minimal'};
