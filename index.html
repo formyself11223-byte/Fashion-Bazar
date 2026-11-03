@@ -107,6 +107,8 @@ footer{background:#102f28;margin-top:42px;padding:44px 0}footer .foot{align-item
 <div class="delivery-promise"><span>✓</span><p data-bn="অর্ডার করার সময় আপনার থানা নির্বাচন করলেই ডেলিভারি চার্জ স্বয়ংক্রিয়ভাবে হিসাব হবে। পণ্য হাতে পাওয়ার সময় ডেলিভারি কর্মীর সামনে পণ্য পরীক্ষা করুন।" data-en="Choose your thana at checkout and the delivery fee will be calculated automatically. Please check your parcel while the delivery person is present.">অর্ডার করার সময় আপনার থানা নির্বাচন করলেই ডেলিভারি চার্জ স্বয়ংক্রিয়ভাবে হিসাব হবে। পণ্য হাতে পাওয়ার সময় ডেলিভারি কর্মীর সামনে পণ্য পরীক্ষা করুন।</p></div>
 </div>
 </section>
+<section class="section wrap" id="exchange-policy"><div style="border:1px solid #e5d7b7;background:#fff8e8;padding:16px;border-radius:14px"><h2 style="margin-top:0">ডেলিভারি ও এক্সচেঞ্জ নীতি</h2><p style="margin:6px 0 0">পণ্য হাতে পাওয়ার সময় ডেলিভারি কর্মীর উপস্থিতিতেই পরীক্ষা করুন। পণ্যে ত্রুটি থাকলে ডেলিভারি কর্মী চলে যাওয়ার আগে জানান; যাচাই করে আমাদের নীতিমালা অনুযায়ী প্রতিস্থাপনের ব্যবস্থা করা হবে। ডেলিভারি কর্মী চলে যাওয়ার পরে এক্সচেঞ্জের জন্য সাধারণত নতুন ডেলিভারি চার্জ প্রযোজ্য হবে।</p></div>
+</section>
 <section class="section wrap" id="order"><div class="order-box"><div><div class="eyebrow" data-bn="সহজ অর্ডার" data-en="QUICK ORDER">সহজ অর্ডার</div><h2 data-bn="অর্ডার দিতে চান?" data-en="Ready to order?">অর্ডার দিতে চান?</h2><p data-bn="পণ্য বেছে কার্টে যোগ করুন, আপনার তথ্য দিন—অর্ডার সেভ হবে এবং আমাদের Telegram-এ নোটিফিকেশন যাবে।" data-en="Add products to your cart, enter your details, and submit. Your order will be saved and we will receive a Telegram notification.">পণ্য বেছে কার্টে যোগ করুন, আপনার তথ্য দিন—অর্ডার সেভ হবে এবং আমাদের Telegram-এ নোটিফিকেশন যাবে।</p><p class="note" data-bn="আপনার অর্ডার ডাটাবেসে সেভ হবে। অর্ডার নিশ্চিত করতে আমরা ফোনে যোগাযোগ করতে পারি।" data-en="Your order is saved to the database. We may call you to confirm it.">আপনার অর্ডার ডাটাবেসে সেভ হবে। অর্ডার নিশ্চিত করতে আমরা ফোনে যোগাযোগ করতে পারি।</p></div>
 <form class="form" id="orderForm">
 <div class="full" style="background:white;border:1px solid #dce2d9;border-radius:12px;padding:14px"><b>🛒 আপনার কার্ট</b><div id="cartItems" style="margin-top:10px">এখনো কোনো পণ্য যোগ করা হয়নি।</div><div style="margin-top:10px">পণ্যের মূল্য: <b id="cartSubtotal">৳0</b></div><div>ডেলিভারি চার্জ: <b id="cartDelivery">ঠিকানা লিখুন</b></div><div style="margin-top:6px;font-weight:850">সর্বমোট: <span id="cartTotal">৳0</span></div></div>
@@ -117,7 +119,7 @@ footer{background:#102f28;margin-top:42px;padding:44px 0}footer .foot{align-item
 <label><span>থানা / উপজেলা *</span><select name="upazila" id="upazilaSelect" required disabled><option value="">আগে জেলা নির্বাচন করুন</option></select></label>
 <label class="full"><span>সম্পূর্ণ ডেলিভারি ঠিকানা *</span><textarea name="delivery_address" required maxlength="1000" placeholder="বাসা/ফ্ল্যাট, রোড, এলাকার নাম এবং পরিচিত স্থান লিখুন"></textarea></label>
 <p class="note full" id="deliveryFeeHint">থানা নির্বাচন করলে ডেলিভারি চার্জ এখানে এবং কার্টে দেখা যাবে।</p>
-<div class="full" style="border:1px solid #e5d7b7;background:#fff8e8;padding:12px;border-radius:12px"><b>ডেলিভারি ও এক্সচেঞ্জ নীতি</b><p style="margin:6px 0 0">পণ্য হাতে পাওয়ার সময় ডেলিভারি কর্মীর উপস্থিতিতেই পরীক্ষা করুন। পণ্যে ত্রুটি থাকলে ডেলিভারি কর্মী চলে যাওয়ার আগে জানান; যাচাই করে আমাদের নীতিমালা অনুযায়ী প্রতিস্থাপনের ব্যবস্থা করা হবে। ডেলিভারি কর্মী চলে যাওয়ার পরে এক্সচেঞ্জের জন্য সাধারণত নতুন ডেলিভারি চার্জ প্রযোজ্য হবে।</p></div>
+
 <label class="full"><span>অতিরিক্ত নোট (ঐচ্ছিক)</span><textarea name="note" maxlength="500" placeholder="সাইজ/রঙ বা অন্য তথ্য"></textarea></label>
 <div class="form-actions"><button class="btn primary" id="submitOrder" type="submit">অর্ডার নিশ্চিত করুন</button><button class="btn secondary" type="button" id="clearCart">কার্ট খালি করুন</button></div>
 <p class="note full" id="orderStatus" role="status"></p>
@@ -132,6 +134,7 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const MESSENGER_URL = "https://m.me/fashionbazar11";
 const CURRENCY = "৳";
 let products = [];
+let managedCategories = [];
 let lang = "bn", activeCat = "all";
 const fallbackProducts = [
  {id:1,bn:"স্টাইলিশ টি-শার্ট",en:"Stylish T-Shirt",catBn:"ফ্যাশন",catEn:"Fashion",price:450,emoji:"👕",descBn:"আরামদায়ক দৈনন্দিন পোশাক",descEn:"Comfortable everyday wear"}
@@ -142,6 +145,9 @@ function productName(p){return isEN()?p.en:p.bn}
 function categoryName(p){return isEN()?p.catEn:p.catBn}
 function showToast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",3000)}
 function money(n){return CURRENCY+Number(n||0).toLocaleString("en-US")}
+async function loadManagedCategories(){
+ try { const r=await fetch(`${SUPABASE_URL}/rest/v1/categories?select=name,subcategories&order=sort_order.asc,name.asc`,{headers:{apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`}}); if(!r.ok) return; const rows=await r.json(); if(Array.isArray(rows)&&rows.length){managedCategories=rows.map(x=>({name:x.name,subcategories:Array.isArray(x.subcategories)?x.subcategories:[]}));renderCategories();} } catch(e) { console.warn('Managed categories unavailable; using product categories.',e); }
+}
 async function loadProducts(){
  try {
   const response = await fetch(`${SUPABASE_URL}/rest/v1/products?select=id,name,description,price,original_price,product_code,video_url,has_sizes,sizes,image_url,category,stock,created_at&order=created_at.desc`, {headers:{apikey:SUPABASE_ANON_KEY,Authorization:`Bearer ${SUPABASE_ANON_KEY}`}});
@@ -178,8 +184,9 @@ function renderDiscoverySections(){
  ['offerGrid','newArrivalsGrid'].forEach(id=>{const grid=$(id);if(!grid||grid.dataset.bound)return;grid.dataset.bound='1';grid.addEventListener('click',e=>{const b=e.target.closest('[data-order]');if(b){addToCart(b.dataset.order);return}const d=e.target.closest('[data-detail]');if(d)showProductDetail(d.dataset.detail);});});
 }
 function renderCategories(){
- const parents=[...new Set(products.map(p=>p.parentCat||p.catBn))];
- const children=[...new Set(products.filter(p=>activeCat==="all"||p.parentCat===activeCat).map(p=>p.subCat||p.catBn))];
+ const sourceParents=managedCategories.length?managedCategories.map(c=>c.name):products.map(p=>p.parentCat||p.catBn);
+ const parents=[...new Set(sourceParents)];
+ const children=[...new Set(managedCategories.length?managedCategories.filter(c=>(activeCat==="all"||c.name===activeCat)).flatMap(c=>c.subcategories||[]):products.filter(p=>activeCat==="all"||p.parentCat===activeCat).map(p=>p.subCat||p.catBn))];
  $("categories").innerHTML=`<div style="width:100%;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:7px"><button class="chip ${activeCat==="all"?"active":""}" data-cat="all">সব পণ্য</button>`+parents.map(c=>`<button class="chip ${activeCat===c?"active":""}" data-cat="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join("")+`</div>`+
  (activeCat!=="all"?`<div style="width:100%;display:flex;gap:8px;flex-wrap:wrap">${children.map(c=>`<button class="chip" data-subcat="${escapeHtml(c)}">${escapeHtml(c)}</button>`).join("")}</div>`:"");
  $("categories").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{activeCat=b.dataset.cat;selectedSub="";renderCategories();renderProducts()});
@@ -265,7 +272,7 @@ $("orderForm").addEventListener("submit",async e=>{
   cart.clear();renderCart();$("orderForm").reset();status.textContent=notified?"✅ আপনার অর্ডার সফলভাবে জমা হয়েছে! আমরা শিগগির যোগাযোগ করব।":"✅ অর্ডার সেভ হয়েছে, তবে Telegram নোটিফিকেশন পাঠানো যায়নি। আমরা অর্ডারটি পেয়েছি।";showToast("অর্ডার জমা হয়েছে!");
  }catch(err){status.textContent="❌ অর্ডার জমা হয়নি: "+err.message+"। অনুগ্রহ করে আবার চেষ্টা করুন।"}finally{btn.disabled=false}
 });
-loadProducts();
+loadProducts(); loadManagedCategories();
 loadLocationData();
 </script>
 </body>
